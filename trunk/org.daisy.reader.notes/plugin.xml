@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         id="org.daisy.reader.notes.propertysourceprovider"
+         name="Notes Source Provider"
+         point="org.eclipse.ui.services">
+      <sourceProvider
+            provider="org.daisy.reader.notes.PropertySourceProvider">
+        <variable
+               name="org.daisy.reader.notes.IsEmpty"
+               priorityLevel="workbench">
+         </variable>        
+      </sourceProvider>
+   </extension>
+</plugin>   
