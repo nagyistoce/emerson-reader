@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Emerson UI DTB Contributions
+Bundle-SymbolicName: org.daisy.emerson.ui.dtb;singleton:=true
+Bundle-Version: 0.6.0
+Bundle-Activator: org.daisy.emerson.ui.dtb.Activator
+Bundle-Vendor: daisy.org
+Require-Bundle: org.eclipse.ui;bundle-version="3.4.1",
+ org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.daisy.reader.model.dtb
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
