@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.daisy.reader.ncx.NcxItem"
+            class="org.daisy.reader.ncx.NcxAdapterFactory">
+         <adapter
+               type="org.daisy.reader.model.adapt.ILabelAdapter">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.daisy.reader.ncx.Ncx"
+            class="org.daisy.reader.ncx.NcxAdapterFactory">
+         <adapter
+               type="org.daisy.reader.model.adapt.ILazyTreeAdapter">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.daisy.reader.ncx.NcxNavPoint"
+            class="org.daisy.reader.ncx.NcxAdapterFactory">
+         <adapter
+               type="org.daisy.reader.model.adapt.ILazyTreeAdapter">
+         </adapter>
+      </factory>      
+   </extension>
+
+</plugin>
