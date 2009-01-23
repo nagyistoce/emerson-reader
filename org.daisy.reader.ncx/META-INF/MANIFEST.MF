@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Reader Z39.86 NCX Model
+Bundle-SymbolicName: org.daisy.reader.ncx;singleton:=true
+Bundle-Version: 0.6.0
+Bundle-Activator: org.daisy.reader.ncx.Activator
+Bundle-Vendor: daisy.org
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.daisy.reader.model
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Import-Package: javax.xml.stream;version="1.0.1"
+Export-Package: org.daisy.reader.ncx
+Bundle-Localization: plugin
