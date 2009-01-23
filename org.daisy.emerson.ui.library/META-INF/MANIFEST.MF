@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: org.daisy.emerson.ui.library;singleton:=true
+Bundle-Version: 0.6.0
+Bundle-Activator: org.daisy.emerson.ui.library.Activator
+Bundle-Vendor: %Bundle-Vendor.0
+Require-Bundle: org.eclipse.ui;bundle-version="3.4.1",
+ org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.daisy.reader.model,
+ org.daisy.reader.history,
+ org.daisy.emerson.ui
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
