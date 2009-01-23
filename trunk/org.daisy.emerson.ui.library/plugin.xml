@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="%view.name.library"
+            icon="icons/bookshelf.gif"
+            category="org.daisy.emerson.ui.views"
+            class="org.daisy.emerson.ui.library.LibraryView"
+            id="org.daisy.emerson.ui.views.library">            
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.daisy.emerson.ui.perspectives.default">
+            <view
+                  closeable="true"
+                  id="org.daisy.emerson.ui.views.library"
+                  moveable="true"
+                  relationship="stack"
+                  relative="org.daisy.emerson.ui.perspectives.default.bottomFolder"
+                  showTitle="true"
+                  standalone="false"
+                  visible="true"/>                        
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="%command.description.readSelected"
+            id="org.daisy.emerson.commands.library.read"
+            name="%command.name.readSelected"/>                  
+      <command
+            description="%command.description.deleteSelected"
+            id="org.daisy.emerson.commands.library.delete"
+            name="%command.name.deleteSelected"/>      
+      <command
+            description="%command.description.showInformationSelected"
+            id="org.daisy.emerson.commands.library.info"
+            name="%command.name.showInformationSelected"/>
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="org.daisy.emerson.commands.library.read"
+            icon="icons/read_book.gif"
+            disabledIcon="icons/read_book_disabled.gif"/>
+      <image
+            commandId="org.daisy.emerson.commands.library.delete"
+            icon="icons/delete.gif"
+            disabledIcon="icons/delete_disabled.gif"/>
+      <image
+            commandId="org.daisy.emerson.commands.library.info"
+            icon="icons/info.gif"
+            disabledIcon="icons/info_disabled.gif"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.daisy.emerson.ui.views.library?after=additions">
+         <command
+               commandId="org.daisy.emerson.commands.open"
+               id="org.daisy.emerson.menus.library.open"
+               mnemonic="%command.mnemonic.open"/>
+         <command
+               commandId="org.daisy.emerson.commands.library.delete"
+               id="org.daisy.emerson.menus.library.delete"
+               mnemonic="%command.mnemonic.deleteSelected"/>               
+         <command
+               commandId="org.daisy.emerson.commands.library.info"
+               id="org.daisy.emerson.menus.library.info"
+               mnemonic="%command.mnemonic.infoSelected"/>
+         <command
+               commandId="org.daisy.emerson.commands.library.read"
+               id="org.daisy.emerson.menus.library.read"
+               mnemonic="%command.mnemonic.readSelected"/>
+         <separator name="org.daisy.emerson.ui.library.menu.separator1" visible="true"/>
+         <command
+               commandId="org.daisy.emerson.commands.view.close"
+               id="org.daisy.emerson.menus.library.view.close">
+               <parameter
+                     name="org.daisy.emerson.ui.views.close.viewID"
+                     value="org.daisy.emerson.ui.views.library">
+               </parameter>
+         </command>         
+      </menuContribution>
+      <!--
+      <menuContribution
+            locationURI="toolbar:org.daisy.emerson.ui.views.library?after=additions">
+         <command
+               commandId="org.daisy.emerson.commands.open"
+               id="org.daisy.emerson.toolbars.library.open"/>
+         <command
+               commandId="org.daisy.emerson.commands.library.read"
+               id="org.daisy.emerson.toolbars.library.read"/>
+         <command
+               commandId="org.daisy.emerson.commands.library.delete"
+               id="org.daisy.emerson.toolbars.library.delete"/>
+         <command
+               commandId="org.daisy.emerson.commands.library.info"
+               id="org.daisy.emerson.menus.library.info"/>
+      </menuContribution>
+      -->
+      <menuContribution
+            locationURI="menu:org.daisy.emerson.menus.ShowViewMenu">               
+            <command
+                  commandId="org.eclipse.ui.views.showView"
+                  icon="icons/bookshelf.gif"
+                  id="org.daisy.emerson.ui.main.menu.showlibrary"
+                  label="%command.label.showLibrary"
+                  mnemonic="%command.mnemonic.showLibrary">
+               <parameter
+                     name="org.eclipse.ui.views.showView.viewId"
+                     value="org.daisy.emerson.ui.views.library">
+               </parameter>
+            </command>         
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.daisy.emerson.ui.library.handlers.DeleteSelectionHandler"
+            commandId="org.daisy.emerson.commands.library.delete">	        
+	        <activeWhen>                  
+	           <reference
+	               definitionId="org.daisy.emerson.ui.views.library.inView">
+	           </reference>
+	        </activeWhen>	        
+         	<enabledWhen>         
+            	<with variable="selection">
+					<iterate ifEmpty="false">
+						<adapt type="org.daisy.reader.history.HistoryEntry"/>
+					</iterate>												
+			 	</with>
+         	</enabledWhen>
+      </handler>
+      <handler
+            commandId="org.daisy.emerson.commands.library.read"
+            class="org.daisy.emerson.ui.library.handlers.ReadSelectedHandler">    
+	        <activeWhen>
+	           <reference
+	                definitionId="org.daisy.emerson.ui.views.library.inView">
+	           </reference>
+	        </activeWhen>
+	        <enabledWhen>         
+	     	    <with variable="selection">
+					<count value="1" />
+					<iterate ifEmpty="false">
+						<adapt type="org.daisy.reader.history.HistoryEntry"/>
+					</iterate>						
+				</with>	              
+	        </enabledWhen>
+      </handler>
+      <handler
+            commandId="org.daisy.emerson.commands.library.info"
+            class="org.daisy.emerson.ui.library.handlers.InfoSelectedHandler">    
+	        <activeWhen>
+	           <reference
+	                definitionId="org.daisy.emerson.ui.views.library.inView">
+	           </reference>
+	        </activeWhen>
+	        <enabledWhen>         
+	     	    <with variable="selection">
+					<count value="1" />
+					<iterate ifEmpty="false">
+						<adapt type="org.daisy.reader.history.HistoryEntry"/>
+					</iterate>						
+				</with>	              
+	        </enabledWhen>
+      </handler>      
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.definitions">      
+      <definition
+            id="org.daisy.emerson.ui.views.library.inView">            
+	         <with variable="activePartId">
+	            <equals value="org.daisy.emerson.ui.views.library" />
+	         </with>	        
+      </definition>      
+   </extension>
+                     
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.daisy.emerson.commands.library.read"
+            contextId="org.daisy.emerson.contexts.views.library"
+            schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"
+            sequence="ENTER">
+      </key>
+      <key
+            commandId="org.daisy.emerson.commands.library.delete"
+            contextId="org.daisy.emerson.contexts.views.library"
+            schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"
+            sequence="DEL">
+      </key>
+      <key
+     		sequence="M3+L"
+     		contextId="org.eclipse.ui.contexts.window"
+     		commandId="org.eclipse.ui.views.showView"
+     		schemeId="org.daisy.emerson.defaultAcceleratorConfiguration">
+   			<parameter 
+       				id="org.eclipse.ui.views.showView.viewId"
+       				value="org.daisy.emerson.ui.views.library" />
+	  </key>
+      <key
+     		sequence="M1+I"
+     		contextId="org.eclipse.ui.contexts.window"
+     		commandId="org.daisy.emerson.commands.library.info"
+     		schemeId="org.daisy.emerson.defaultAcceleratorConfiguration">
+	  </key>	  
+                
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            id="org.daisy.emerson.contexts.views.library"
+            name="Library Context"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
+   
+</plugin>
