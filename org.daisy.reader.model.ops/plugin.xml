@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         name="epub contenttype"
+         point="org.eclipse.core.runtime.contentTypes">
+      <content-type
+            describer="org.daisy.reader.model.ops.EpubContentDescriber"
+            file-extensions="epub"
+            id="org.daisy.emerson.epub.content-type"
+            name="%content-type.name.epub"
+            priority="high">
+      </content-type>
+   </extension>
+   
+   <extension
+         id="org.daisy.emerson.ops.modelprovider"
+         name="OPS Model Provider"
+         point="org.daisy.reader.model.provider">
+      <provider
+            class="org.daisy.reader.model.ops.OpsModelProvider">
+         <contentType
+               contentTypeId="org.daisy.emerson.epub.content-type">
+         </contentType>
+      </provider>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.daisy.reader.model.ops.PackageFileItem"
+            class="org.daisy.reader.model.ops.OpsAdapterFactory">
+         <adapter
+               type="org.daisy.reader.model.adapt.ITextURLAdapter">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.daisy.reader.model.position.URIPosition"
+            class="org.daisy.reader.model.ops.OpsAdapterFactory">
+         <adapter
+               type="org.daisy.reader.model.adapt.ITextURLAdapter">
+         </adapter>
+      </factory>      
+   </extension>
+
+</plugin>
