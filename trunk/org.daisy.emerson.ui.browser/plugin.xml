@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="%view.name.text"
+            category="org.daisy.emerson.ui.views"
+            class="org.daisy.emerson.ui.browser.BrowserView"
+            id="org.daisy.emerson.ui.views.browser">
+      </view>
+      <category
+            id="org.daisy.emerson.ui.views"
+            name="Emerson Views Category">
+      </category>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.daisy.emerson.ui.perspectives.default">            		  
+            <view
+                  closeable="false"
+                  id="org.daisy.emerson.ui.views.browser"
+                  moveable="false"
+                  ratio="0.15"
+                  relationship="right"
+                  relative="org.daisy.emerson.ui.perspectives.default.leftFolder"
+                  showTitle="false"
+                  standalone="true"
+                  visible="true"/>                        
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution
+            locationURI="menu:org.daisy.emerson.menus.ShowViewMenu">               
+            <command
+                  commandId="org.eclipse.ui.views.showView"
+                  icon="icons/browser.gif"
+                  id="org.daisy.emerson.ui.main.menu.showbrowser"
+                  label="%command.label.showText"
+                  mnemonic="%command.mnemonic.text">
+               <parameter
+                     name="org.eclipse.ui.views.showView.viewId"
+                     value="org.daisy.emerson.ui.views.browser">
+               </parameter>
+            </command>         
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.daisy.emerson.menus.WindowMenu?after=org.daisy.emerson.menus.main.resetPerspective">
+            <command
+                  commandId="org.daisy.emerson.commands.textOnlyPerspective"
+                  id="org.daisy.emerson.menus.main.textOnlyPerspective">
+            </command>
+      </menuContribution>            
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.bindings">      
+      <key
+     		sequence="M3+T"
+     		contextId="org.eclipse.ui.contexts.window"
+     		commandId="org.eclipse.ui.views.showView"
+     		schemeId="org.daisy.emerson.defaultAcceleratorConfiguration">
+   			<parameter 
+       				id="org.eclipse.ui.views.showView.viewId"
+       				value="org.daisy.emerson.ui.views.browser" />
+	  </key>
+                
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            id="org.daisy.emerson.contexts.views.browser"
+            name="Browser Context"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
+      <extension
+            point="org.eclipse.ui.commands">
+		<command
+            defaultHandler="org.daisy.emerson.ui.browser.handlers.TextOnlyPerspectiveHandler"
+            id="org.daisy.emerson.commands.textOnlyPerspective"
+            name="%command.name.textOnlyPerspective">
+      </command>
+      </extension>
+
+</plugin>
