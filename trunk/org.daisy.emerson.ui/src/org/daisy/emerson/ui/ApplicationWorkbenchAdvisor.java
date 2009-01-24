@@ -32,7 +32,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	@Override
 	public IStatus restoreState(IMemento memento) {
 		try{
-			//System.err.println("creating historylist");
+			//TODO use platform autostart extension for historylist and notes
 			HistoryList.create(memento);
 			Notes.create(memento);
 		}catch (Throwable t) {

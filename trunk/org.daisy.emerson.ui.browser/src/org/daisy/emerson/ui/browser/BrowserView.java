@@ -21,6 +21,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IMemento;
@@ -67,7 +68,7 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 			
 	private void reset() {
 		if(!browser.isDisposed())
-			browser.setText(background);		
+			browser.setText(getBackgroundDocument());		
 	}
 
 	/*
@@ -345,10 +346,31 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 		
 	
 	
-	private static final String background = "<html><head><title>Emerson</title>" + //$NON-NLS-1$
-	"<style type='text/css'>body{background-color:rgb(230,230,230); font-size:100.01%;}" + //$NON-NLS-1$
-	"p.a{color:rgb(240,240,240); font-size:10em; align:center; " + //$NON-NLS-1$
-	"</style></head><body><p class='a' align='center'>emerson</p></body><html>"; //$NON-NLS-1$
+	private String getBackgroundDocument(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("<html><head><title>Emerson</title><style type='text/css'>body{background-color:"); //$NON-NLS-1$
+		sb.append(getBackgroundColor());
+		sb.append("; font-size:100.01%;}p.a{color:"); //$NON-NLS-1$
+		sb.append(getForegroundColor());
+		sb.append("; font-size:10em; align:center;}</style></head><body><p class='a' align='center'>emerson</p></body><html>"); //$NON-NLS-1$
+		return sb.toString();
+	}
+	
+	private String getBackgroundColor() {
+		try{
+		  Color bc = browser.getParent().getBackground();
+		  return "rgb("+ bc.getRed() +"," + bc.getGreen() + "," + bc.getBlue() + ")";    //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
+		}catch (Exception e) {}
+		return "rgb(230,230,230)"; //$NON-NLS-1$
+	}
+
+	private String getForegroundColor() {
+		try{
+			  Color bc = browser.getParent().getBackground();
+			  return "rgb("+ bc.getRed()+10 +"," + bc.getGreen()+10 + "," + bc.getBlue()+10 + ")";    //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
+		}catch (Exception e) {}
+		return "rgb(240,240,240)"; //$NON-NLS-1$
+	}
 
 	
 	

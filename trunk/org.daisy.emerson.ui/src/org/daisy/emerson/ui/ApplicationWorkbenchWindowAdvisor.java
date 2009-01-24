@@ -41,7 +41,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		List<?> list  = preferenceManager.getElements(PreferenceManager.PRE_ORDER);
 		for(Object o : list) {
 			IPreferenceNode node = (IPreferenceNode)o;
-			//System.err.println("preferenceNode: " + node.getId());
 			if(!node.getId().startsWith(DAISY_PREF_PAGE_PREFIX)) { 
 				preferenceManager.remove(node);
 			}
