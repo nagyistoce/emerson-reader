@@ -48,30 +48,46 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 	 	
 	@Override
 	public void init(IViewSite site, IMemento memento) throws PartInitException {
-		super.init(site, memento);		
-		//System.err.println("NavigatorView#init");
+		super.init(site, memento);
         ModelManager.addStateChangeListener(this);
-        ModelManager.addPositionChangeListener(this);    
-        /*
-         * Since the navigator view is closeable, we need to cover
-         * for the possibility that a model is loaded (which is not
-         * the case during the first init call in an app session).
-         */
+        ModelManager.addPositionChangeListener(this);
 	}
 	
-//	@Override
-//	public void partOpened(IWorkbenchPartReference partRef) {
-//		//System.err.println("NavigatorView#partOpened");
-//		super.partOpened(partRef);
-//		if(!treeViewer.getControl().isDisposed()) {
-//			Model model = ModelManager.getModel();
-//			if(model!=null && model.getCurrentState()!= ModelState.DISPOSING 
-//					&& model.getCurrentState()!= ModelState.DISPOSED) {
-//				selectCurrent(model);		
-//			}
-//		}
-//	}
+/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
+	 */
+	public void createPartControl(Composite parent) {
+		treeViewer = new TreeViewer(parent, 
+				SWT.VIRTUAL |SWT.BORDER |SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);	
+		
+		treeViewer.setUseHashlookup(true);
+		
+		contentProvider = new NavigatorContentProvider(); 
+		treeViewer.setContentProvider(contentProvider);
+		treeViewer.setLabelProvider(new NavigatorLabelProvider());
+		
+		getSite().setSelectionProvider(treeViewer);
+							
+		treeViewer.addDoubleClickListener(this);
+		
+		if(ModelManager.getModel()!=null) {
+			treeViewer.setInput(ModelManager.getModel().getNavigation());
+			selectCurrent(ModelManager.getModel());
+		}
+		
+		init(treeViewer.getControl()); 				
+						
+	}
 	
+	@Override
+	public void dispose() {	
+		ModelManager.removeStateChangeListener(this);    	
+		ModelManager.removePositionChangeListener(this);
+		treeViewer.getControl().dispose();
+		super.dispose();
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see org.daisy.reader.model.state.IModelStateChangeListener#modelStateChanged(org.daisy.reader.model.state.ModelStateChangeEvent)
@@ -115,46 +131,6 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 			//TODO if the viewer is closed and reopened, the current item is not selected
 			//although we do pass through this method. The same is true at initial load.
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
-	 */
-	public void createPartControl(Composite parent) {		
-		/*
-		 * Note that this method may be called several times during 
-		 * an app session as the NavigatorView is closed and reopened.		
-		 */
-		//System.err.println("NavigatorView#createPartControl");
-		treeViewer = new TreeViewer(parent, 
-				SWT.VIRTUAL |SWT.BORDER |SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);	
-		
-		treeViewer.setUseHashlookup(true);
-		
-		contentProvider = new NavigatorContentProvider(); 
-		treeViewer.setContentProvider(contentProvider);
-		treeViewer.setLabelProvider(new NavigatorLabelProvider());
-		
-		getSite().setSelectionProvider(treeViewer);
-							
-		treeViewer.addDoubleClickListener(this);
-		
-		if(ModelManager.getModel()!=null) {
-			treeViewer.setInput(ModelManager.getModel().getNavigation());
-			selectCurrent(ModelManager.getModel());
-		}
-		
-		init(treeViewer.getControl()); 				
-						
-	}
-					
-	@Override
-	public void dispose() {	
-    	ModelManager.removeStateChangeListener(this);    	
-    	ModelManager.removePositionChangeListener(this);
-		treeViewer.getControl().dispose();
-		super.dispose();
 	}
 
 	/*
