@@ -16,7 +16,7 @@ Linux users: OpenJDK _should_ work, but has not been extensively tested.
 At the time of writing, Emerson supports the [http://www.idpf.org Epub] format.
 
 == What kinds of DTBs does Emerson support? ==
-First regarinf DAISY support: Emerson is an *audio* DTB player. At the time of writing, it does not support text-only DTBs.
+First regarding DAISY support: Emerson is an *audio* DTB player. At the time of writing, it does not support text-only DTBs.
 
 The Daisy formats supported at the time of writing is Daisy 2.02 and Daisy 3 version 2005 (formally ANSI/NISO Z3986-2005).
 
