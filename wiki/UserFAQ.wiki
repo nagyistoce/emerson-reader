@@ -1,0 +1,29 @@
+#summary End-user Frequently Asked Questions
+#labels Featured
+
+= Emerson User FAQ =
+
+=== What are the System Requirements for running Emerson? ===
+You will need Java 5 or later. If its not already installed, visit [http://www.java.com java.com] to download Java.
+
+You also need an operating system to install Java on. Windows, Mac OS X or Linux should do the trick. Solaris is not yet tested.
+
+=== What e-text formats does Emerson support? ===
+At the time of writing, Emerson supports the [http://www.idpf.org Epub] format.
+
+=== What kinds of DTBs does Emerson support? ===
+First, Emerson is an *audio* DTB player. It the time of writing, it does not support text-only DTBs.
+
+The Daisy formats supported at the time of writing is Daisy 2.02 and Daisy 3 version 2005 (formally ANSI/NISO Z3986-2005).
+
+=== What audio formats does Emerson support? ===
+At the time of writing, Emerson supports only *MP3* encoded DTBs. Neither WAV nor AAC is supported.
+
+=== Does Emerson support Time Scale Modification (speed up and slow down) for DAISY DTBs? ===
+No it does not. For players (free and commercial) that supports this feature visit [http://www.daisy.org/tools the daisy.org tools page].
+
+=== Can Emerson play Daisy text books, like those distributed by Bookshare? ===
+No. Please see *What kinds of DTBs does Raymond support?*  above.
+
+=== Does Emerson support DRM (encrypted) content? ===
+Nope. And thats a feature, not a bug.
