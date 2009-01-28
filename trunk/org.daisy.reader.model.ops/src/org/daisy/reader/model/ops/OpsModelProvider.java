@@ -21,6 +21,7 @@ import org.daisy.reader.util.Dtbook;
 import org.daisy.reader.util.FileUtils;
 import org.daisy.reader.util.MIMEConstants;
 import org.daisy.reader.util.TempDir;
+import org.daisy.reader.util.XmlUtils;
 
 public class OpsModelProvider implements IModelProvider {
 
@@ -69,26 +70,34 @@ public class OpsModelProvider implements IModelProvider {
 			f.deleteOnExit();
 			
 			/*			 
-			 * If the content doc is DTBook we mod the doc
-			 * to resolve DTD entities and remove doctype, else
-			 * offline browser load wont work. (We assume any browser
-			 * component has a catalog impl for XHTML, which may not be true).
+			 * We mod the content docs to resolve DTD entities and remove doctype, 
+			 * else offline browser load wont work. (Some browser
+			 * components has a catalog impl for XHTML 1.1, but not all).
+			 * 
 			 * Use xml stream to get optimized speed 
 			 */
-			if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){	
-				//TODO may wanna have a more liberal detection than mime string
-				try{
-					//TODO may wanna use XSLT to get a correct transform
-					//TODO may wanna stream xhtml11 as well to get rid of doctype
-					//streamDtbook(item.mItemURL,f);
+			//TODO may wanna have a more liberal detection than mime string
+			if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){					
+				try{									
 					Dtbook.htmlize(item.mItemURL, f);
 				} catch (Exception e) {
 					Activator.getDefault().logError(e.getMessage(), e);
 					copyFile(item.mItemURL,f);
 				}	
+			} else if(item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_XHTML_XML)){
+				try{									
+					XmlUtils.stripDocType(item.mItemURL, f);
+				} catch (Exception e) {
+					Activator.getDefault().logError(e.getMessage(), e);
+					copyFile(item.mItemURL,f);
+				}				
 			}
-			else {				
-				copyFile(item.mItemURL,f);	
+			else {			
+				try{
+					copyFile(item.mItemURL,f);
+				}catch (IOException e) {
+					Activator.getDefault().logError(e.getLocalizedMessage(), e);
+				}	
 			}
 			
 			if(isContentDoc(item, packageFile)) {
@@ -102,7 +111,6 @@ public class OpsModelProvider implements IModelProvider {
 		InputStream in = null;		
 		try {
 			in = source.openStream();
-			//FileUtils.writeInputStreamToFile(in, dest);
 			FileUtils.writeInputStreamToFile(dest,in);
 		} finally {
 			if (in != null) {
