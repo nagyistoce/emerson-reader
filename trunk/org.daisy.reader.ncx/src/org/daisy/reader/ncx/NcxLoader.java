@@ -75,7 +75,13 @@ public class NcxLoader {
 		String target = null;
 		String label = null;
 		
-		playOrder = Integer.parseInt(reader.getAttributeValue(null, playOrderAttr));		
+		try{
+			playOrder = Integer.parseInt(reader.getAttributeValue(null, playOrderAttr));
+		}catch (Exception e) {
+			//hack-fix for nonexisting playorder attrs
+			Activator.getDefault().logError(Messages.NcxLoader_noPlayOrderError, e);
+			playOrder++;
+		}	
 		while(reader.hasNext()) {			
 			reader.next();			
 			if(reader.isEndElement() && reader.getLocalName()==navPointElem) {
@@ -125,7 +131,9 @@ public class NcxLoader {
 		try{
 			playOrder = Integer.parseInt(reader.getAttributeValue(null, playOrderAttr));
 		}catch (Exception e) {
-			
+			//hack-fix for nonexisting playorder attrs
+			Activator.getDefault().logError(Messages.NcxLoader_noPlayOrderError, e);
+			playOrder++;
 		}
 				
 		while(reader.hasNext()) {
