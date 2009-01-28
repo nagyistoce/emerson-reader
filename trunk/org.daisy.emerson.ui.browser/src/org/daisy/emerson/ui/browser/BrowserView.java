@@ -344,8 +344,6 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 //
 //	}
 		
-	
-	
 	private String getBackgroundDocument(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("<html><head><title>Emerson</title><style type='text/css'>body{background-color:"); //$NON-NLS-1$
@@ -366,13 +364,10 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 
 	private String getForegroundColor() {
 		try{
-			  Color bc = browser.getParent().getBackground();
-			  return "rgb("+ bc.getRed()+10 +"," + bc.getGreen()+10 + "," + bc.getBlue()+10 + ")";    //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
+			Color bc = browser.getParent().getBackground();
+			return "rgb("+ (bc.getRed()+10) +"," + (bc.getGreen()+10) + "," + (bc.getBlue()+10) + ")";    //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
 		}catch (Exception e) {}
 		return "rgb(240,240,240)"; //$NON-NLS-1$
 	}
-
-	
-	
 
 }
