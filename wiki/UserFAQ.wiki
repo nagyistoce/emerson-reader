@@ -12,6 +12,8 @@ You also need an operating system to install Java on. Windows, Mac OS X or Linux
 
 Linux users: OpenJDK _should_ work, but has not been extensively tested.
 
+Linux users: there are known issues with Emerson and PulseAudio, use ALSA audio drivers.
+
 == What e-text formats does Emerson support? ==
 At the time of writing, Emerson supports the [http://www.idpf.org Epub] format.
 
