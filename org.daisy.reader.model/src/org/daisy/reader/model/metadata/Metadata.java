@@ -30,7 +30,7 @@ public class Metadata extends HashMap<String,String> {
 		
 	@Override
 	public String get(Object key) {
-		if(key.equals(Metadata.UUID) && !super.containsKey(key)) {
+		if(key.equals(Metadata.UUID) && super.get(key)==null) {
 			//generate a UUID that will be the same for each calc
 			super.put(Metadata.UUID, getUID(source));
 		}
@@ -46,7 +46,7 @@ public class Metadata extends HashMap<String,String> {
 			is = source.openStream();
 			xsr = xif.createXMLStreamReader(is);
 			while(xsr.hasNext()) {
-				int type = xsr.next();
+				int type = xsr.next();				
 				if(type == XMLEvent.CHARACTERS){
 					sb.append(trim(xsr.getText()));
 				}
@@ -66,10 +66,14 @@ public class Metadata extends HashMap<String,String> {
 		String result = StringUtils.toRestrictedSubset(
 				StringUtils.FilenameRestriction.Z3986, sb.toString());
 		
-		if(result.length()>64) result = result.substring(0, 48);
+		if(result.length()>64) result = result.substring(result.length()-64, result.length());
 		
 		//give up creating a repeatable one
-		if(result.length()<1) result = java.util.UUID.randomUUID().toString().substring(0, 48);
+		if(result.length()<1) {
+			result = java.util.UUID.randomUUID().toString();
+			if(result.length()>48)
+			result = result.substring(0, 48);
+		}	
 		
 		return result;
 		
