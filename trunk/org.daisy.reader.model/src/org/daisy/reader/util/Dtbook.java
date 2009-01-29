@@ -51,7 +51,7 @@ public class Dtbook {
 			boolean firstStartElement = true;
 			//String defaultNamespace = "";
 			String defaultNamespace = XHTML_NS; 
-			writer.writeStartDocument(UTF_8, "1.0");			 //$NON-NLS-1$
+			writer.writeStartDocument(UTF_8, "1.0"); //$NON-NLS-1$
 			while(reader.hasNext()) {				
 				reader.next();
 				switch(reader.getEventType()) {
