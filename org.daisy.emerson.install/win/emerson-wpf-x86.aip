@@ -13,7 +13,7 @@
     <ROW Property="ProductCode" Value="1033:{96960A8F-BCA5-4C2D-9143-A396414ABE6C} "/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Emerson" ValueLocId="*"/>
-    <ROW Property="ProductVersion" Value="0.6.0"/>
+    <ROW Property="ProductVersion" Value="0.6.1"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{73ED7B74-570C-4EAB-B43D-B12CD004B540}"/>
     <ROW Property="WindowsFamily9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
