@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.4"?>
 
-<product name="Emerson" id="org.daisy.emerson.ui.product" application="org.daisy.emerson.ui.application" version="0.6.0" useFeatures="false">
+<product name="Emerson" id="org.daisy.emerson.ui.product" application="org.daisy.emerson.ui.application" version="0.6.1" useFeatures="false">
 
    <aboutInfo>
       <image path="/org.daisy.emerson.ui/icons/goggle-about.png"/>
       <text>
          Emerson: Epub and DAISY Reader
-Version: 0.6.0
+Version: 0.6.1
 http://code.google.com/p/emerson-reader
 
 Read more at
@@ -20,10 +20,10 @@ http://www.daisy.org
    </configIni>
 
    <launcherArgs>
-      <programArgs>--launcher.XXMaxPermSize
-512m</programArgs>
+      <programArgs>--launcher.XXMaxPermSize 
+128m</programArgs>
       <vmArgs>-Xms40m 
--Xmx512m</vmArgs>
+-Xmx256m</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
