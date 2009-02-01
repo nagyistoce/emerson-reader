@@ -3,6 +3,7 @@ package org.daisy.reader.model.z2005;
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Set;
 
 import org.daisy.reader.model.dtb.IDtbTextContentSubstitutor;
 import org.daisy.reader.model.property.IPropertyConstants;
-import org.daisy.reader.util.Dtbook;
+import org.daisy.reader.util.StreamTransformer;
 import org.daisy.reader.util.TempDir;
 import org.daisy.reader.util.URIStringParser;
 
@@ -66,8 +67,8 @@ public class Z2005DtbookSubstitutor implements IDtbTextContentSubstitutor {
 			if(errorFiles.contains(path)) return null;
 			
 			if(!substitutes.containsKey(path)) {				
-				File dest = new File(tempdir,URIStringParser.getFileLocalName(path).replace(".xml", ".html")); //$NON-NLS-1$ //$NON-NLS-2$
-				substitutes.put(path, Dtbook.htmlize(original, dest, true));				
+				File dest = new File(tempdir,URIStringParser.getFileLocalName(path).replace(".xml", ".html")); //$NON-NLS-1$ //$NON-NLS-2$		
+				substitutes.put(path, StreamTransformer.transform(original, dest, getTransformConfig()));				
 			}
 			
 			File substituteFile = substitutes.get(path);
@@ -98,6 +99,35 @@ public class Z2005DtbookSubstitutor implements IDtbTextContentSubstitutor {
 				Activator.getDefault().logError(e.getLocalizedMessage(), e);
 			}
 		}
+	}
+	
+	
+	Map<String, Object> dtbookConfig;
+
+	private Map<String, Object> getTransformConfig() {
+
+		if (dtbookConfig == null) {
+			dtbookConfig = new HashMap<String, Object>();
+			dtbookConfig.put(StreamTransformer.KEY_DTD, "");
+			dtbookConfig.put(StreamTransformer.KEY_HTTP_EQUIV, Boolean.TRUE);
+			
+			ArrayList<String> uriAttrs = new ArrayList<String>();
+			uriAttrs.add("src");
+			uriAttrs.add("href");
+			uriAttrs.add("smilref");
+			dtbookConfig.put(StreamTransformer.KEY_MOD_RELATIVE_LINKS, uriAttrs);
+
+			Map<String, String> nsMap = new HashMap<String, String>();
+			nsMap.put(StreamTransformer.NAMESPACE_DTBOOK, StreamTransformer.NAMESPACE_XHTML);
+			dtbookConfig.put(StreamTransformer.KEY_NAMESPACE_MAP, nsMap);
+
+			Map<String, String> elemMap = new HashMap<String, String>();
+			elemMap.put(StreamTransformer.ELEMENT_DTBOOK, StreamTransformer.ELEMENT_HTML);
+			elemMap.put(StreamTransformer.ELEMENT_BOOK, StreamTransformer.ELEMENT_BODY);
+			dtbookConfig.put(StreamTransformer.KEY_ELEMENT_MAP, elemMap);
+		}
+		return dtbookConfig;
+
 	}
 	
 }
