@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Emerson Application
 Bundle-SymbolicName: org.daisy.emerson.ui;singleton:=true
-Bundle-Version: 0.6.1
+Bundle-Version: 0.6.2
 Bundle-Activator: org.daisy.emerson.ui.Activator
 Bundle-Vendor: daisy.org
 Require-Bundle: org.eclipse.ui;bundle-version="3.4.1",
@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.4.1",
  org.daisy.reader.model,
  org.daisy.reader.history,
  org.daisy.reader.notes,
- org.eclipse.ui.views.log;bundle-version="1.0.100"
+ org.eclipse.ui.views.log;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.daisy.emerson.ui,

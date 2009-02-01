@@ -6,8 +6,10 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -17,11 +19,10 @@ import org.daisy.reader.model.metadata.Metadata;
 import org.daisy.reader.model.navigation.INavigation;
 import org.daisy.reader.model.provide.IModelProvider;
 import org.daisy.reader.ncx.Ncx;
-import org.daisy.reader.util.Dtbook;
 import org.daisy.reader.util.FileUtils;
 import org.daisy.reader.util.MIMEConstants;
+import org.daisy.reader.util.StreamTransformer;
 import org.daisy.reader.util.TempDir;
-import org.daisy.reader.util.XmlUtils;
 
 public class OpsModelProvider implements IModelProvider {
 
@@ -72,41 +73,86 @@ public class OpsModelProvider implements IModelProvider {
 			/*			 
 			 * We mod the content docs to resolve DTD entities and remove doctype, 
 			 * else offline browser load wont work. (Some browser
-			 * components has a catalog impl for XHTML 1.1, but not all).
+			 * components has a catalog impl for XHTML 1.1, but not all. No browser
+			 * impl has a catalog impl for DTBook).
 			 * 
-			 * Use xml stream to get optimized speed 
+			 * Use xml stream to get optimized speed.
 			 */
-			//TODO may wanna have a more liberal detection than mime string
-			if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){					
-				try{									
-					Dtbook.htmlize(item.mItemURL, f);
-				} catch (Exception e) {
-					Activator.getDefault().logError(e.getMessage(), e);
-					copyFile(item.mItemURL,f);
-				}	
-			} else if(item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_XHTML_XML)){
-				try{									
-					XmlUtils.stripDocType(item.mItemURL, f);
-				} catch (Exception e) {
-					Activator.getDefault().logError(e.getMessage(), e);
-					copyFile(item.mItemURL,f);
-				}				
-			}
-			else {			
-				try{
-					copyFile(item.mItemURL,f);
-				}catch (IOException e) {
-					Activator.getDefault().logError(e.getLocalizedMessage(), e);
-				}	
-			}
 			
 			if(isContentDoc(item, packageFile)) {
-				extracted.add(new PackageFileItem(item.mItemID,item.mHref,dest.toURL(),item.mItemMediaType));
-			}	
+				try{														
+					StreamTransformer.transform(item.mItemURL, f, getTransformConfig(item));
+					extracted.add(new PackageFileItem(item.mItemID,item.mHref,dest.toURL(),item.mItemMediaType));
+					continue;
+				} catch (Exception e) {
+					Activator.getDefault().logError(e.getMessage(), e);
+				}				
+			}
+			try{
+				copyFile(item.mItemURL,f);
+			}catch (IOException e) {
+				Activator.getDefault().logError(e.getLocalizedMessage(), e);
+			}
+//			if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){					
+//				try{									
+//					Dtbook.htmlize(item.mItemURL, f);
+//				} catch (Exception e) {
+//					Activator.getDefault().logError(e.getMessage(), e);
+//					copyFile(item.mItemURL,f);
+//				}	
+//			} else if(item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_XHTML_XML)){
+//				try{									
+//					XmlUtils.stripDocType(item.mItemURL, f);
+//				} catch (Exception e) {
+//					Activator.getDefault().logError(e.getMessage(), e);
+//					copyFile(item.mItemURL,f);
+//				}				
+//			}
+//			else {			
+//				try{
+//					copyFile(item.mItemURL,f);
+//				}catch (IOException e) {
+//					Activator.getDefault().logError(e.getLocalizedMessage(), e);
+//				}	
+//			}
+			
+//			if(isContentDoc(item, packageFile)) {
+//				extracted.add(new PackageFileItem(item.mItemID,item.mHref,dest.toURL(),item.mItemMediaType));
+//			}	
 		}
 		return extracted;
 	}
 
+	Map<String,Object> xhtmlConfig;
+	Map<String,Object> dtbookConfig;
+	private Map<String,Object> getTransformConfig(PackageFileItem item) {
+		if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){
+			if(dtbookConfig==null) {
+				dtbookConfig = new HashMap<String,Object>();
+				dtbookConfig.put(StreamTransformer.KEY_DTD, "");
+				dtbookConfig.put(StreamTransformer.KEY_HTTP_EQUIV, Boolean.TRUE);
+				
+				Map<String,String> nsMap = new HashMap<String,String>();
+				nsMap.put(StreamTransformer.NAMESPACE_DTBOOK, StreamTransformer.NAMESPACE_XHTML);
+				dtbookConfig.put(StreamTransformer.KEY_NAMESPACE_MAP, nsMap);
+				
+				Map<String,String> elemMap = new HashMap<String,String>();
+				elemMap.put(StreamTransformer.ELEMENT_DTBOOK,StreamTransformer.ELEMENT_HTML);
+				elemMap.put(StreamTransformer.ELEMENT_BOOK,StreamTransformer.ELEMENT_BODY);
+				dtbookConfig.put(StreamTransformer.KEY_ELEMENT_MAP, elemMap);
+			}	
+			return dtbookConfig;
+		}
+		
+		if(xhtmlConfig==null) {
+			xhtmlConfig = new HashMap<String,Object>();
+			xhtmlConfig.put(StreamTransformer.KEY_DTD, "");
+			xhtmlConfig.put(StreamTransformer.KEY_HTTP_EQUIV, Boolean.TRUE);
+		}
+		return xhtmlConfig;
+		
+	}
+	
 	private void copyFile(URL source, File dest) throws IOException {				
 		InputStream in = null;		
 		try {

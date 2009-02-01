@@ -290,7 +290,7 @@
        point="org.eclipse.core.runtime.products">
     <product
           application="org.daisy.emerson.ui.application"
-          name="%product.name">
+          name="Emerson">
           
         <property
          name="preferenceCustomization"

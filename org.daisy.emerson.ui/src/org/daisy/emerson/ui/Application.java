@@ -15,10 +15,12 @@ import org.eclipse.ui.PlatformUI;
  *  TODO navigator view does not position itself at history position at open
  *  TODO when browser focus, sometimes keys stop working
  *  TODO Orca testing
- *  TODO installers
+ *  TODO deb for linux installer
  *  TODO case sensitivity on linux, if url to smil or textcontent or audio doesnt resolve, try to do a case check
  *  TODO throw contentnotsupported if 2.02 mvdtb
  *  TODO togglable text highlight in browser
+ *  TODO local DTDs instead of null doctype
+ *  TODO implement SubstituteProvider for epub as well, enables lazy provision
   
  * ** major next stuff **
  * TODO add mozilla+xulrunner support, MozillaPosition (must be Autonomous)

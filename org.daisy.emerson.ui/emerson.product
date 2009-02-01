@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.4"?>
 
-<product name="Emerson" id="org.daisy.emerson.ui.product" application="org.daisy.emerson.ui.application" version="0.6.1" useFeatures="false">
+<product name="Emerson" id="org.daisy.emerson.ui.product" application="org.daisy.emerson.ui.application" version="0.6.2" useFeatures="false">
 
    <aboutInfo>
       <image path="/org.daisy.emerson.ui/icons/goggle-about.png"/>
@@ -40,7 +40,6 @@ http://www.daisy.org
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -98,8 +97,8 @@ http://www.daisy.org
       <plugin id="org.eclipse.osgi.services"/>
       <plugin id="org.eclipse.swt"/>
       <plugin id="org.eclipse.swt.carbon.macosx" fragment="true"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx" fragment="true"/>
-      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64" fragment="true"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx"/>
+      <plugin id="org.eclipse.swt.cocoa.macosx.x86_64"/>
       <plugin id="org.eclipse.swt.gtk.linux.ppc" fragment="true"/>
       <plugin id="org.eclipse.swt.gtk.linux.x86" fragment="true"/>
       <plugin id="org.eclipse.swt.gtk.linux.x86_64" fragment="true"/>
@@ -111,7 +110,7 @@ http://www.daisy.org
       <plugin id="org.eclipse.swt.wpf.win32.x86" fragment="true"/>
       <plugin id="org.eclipse.ui"/>
       <plugin id="org.eclipse.ui.carbon" fragment="true"/>
-      <plugin id="org.eclipse.ui.cocoa" fragment="true"/>
+      <plugin id="org.eclipse.ui.cocoa"/>
       <plugin id="org.eclipse.ui.views.log"/>
       <plugin id="org.eclipse.ui.workbench"/>
    </plugins>
