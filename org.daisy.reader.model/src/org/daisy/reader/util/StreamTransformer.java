@@ -46,6 +46,8 @@ public class StreamTransformer {
 	 *   <dt>KEY_MOD_RELATIVE_LINKS</dt>
 	 *   <dd>Collection<String>. Whether to modify relative URLs occurring within the document to point back to source base.
 	 *   The value is a collection of attribute names that may contain URLs. If the key is absent, or the value is null, no modification is done.</dd>
+	 *   <dt>KEY_FORCE_HTML_EXTENSION</dt>
+	 *   <dd>Boolean. Whether to force the extension ".html" to result. If null, no change made.</dd>
 	 * </dl>          
 	 * @throws IOException 
 	 * @throws XMLStreamException 
@@ -70,6 +72,7 @@ public class StreamTransformer {
 				: Boolean.FALSE;
 			boolean httpEquivAdded = false;
 			
+			//whether to mod relative links, null if not
 			Collection<?> linkAttrs = (Collection<?>)config.get(KEY_MOD_RELATIVE_LINKS);
 			
 			//base, if modifying relative links
@@ -79,6 +82,12 @@ public class StreamTransformer {
 			
 			String piCssUri = null;
 			
+			//extension
+			Boolean ext = (Boolean)config.get(KEY_FORCE_HTML_EXTENSION);
+			if(ext!=null && ext.booleanValue()) {
+				result = new File(result.getParentFile(),FileUtils.getNameMinusExtension(result)+".html"); //$NON-NLS-1$
+			}
+						
 			//set up reader and writer
 			xif = StAXFactoryProxy.getXMLInputFactory();
 			xof = StAXFactoryProxy.getXMLOutputFactory();
@@ -143,11 +152,11 @@ public class StreamTransformer {
 						break;
 					case XMLStreamConstants.DTD:
 						String dtd = (String)config.get(KEY_DTD);
-							if(dtd!=null)  {
-								writer.writeDTD(dtd);
-							}else{
-								writer.writeDTD(reader.getText());
-							}
+						if(dtd!=null)  {
+							writer.writeDTD(dtd);
+						}else{
+							writer.writeDTD(reader.getText());
+						}
 						break;						
 					case XMLStreamConstants.CHARACTERS:
 						writer.writeCharacters(reader.getTextCharacters(), 
@@ -172,7 +181,7 @@ public class StreamTransformer {
 								int startIndex = data.indexOf(ch)+1;
 								int endIndex = data.indexOf(ch,startIndex+1);
 								piCssUri = data.substring(startIndex, endIndex);
-								forward = false;
+								//forward = false;
 							}catch (Exception e) {
 								piCssUri = null;
 							}	
@@ -210,6 +219,7 @@ public class StreamTransformer {
 	public static final String KEY_ELEMENT_MAP = "KEY_ELEMENT_MAP"; //$NON-NLS-1$
 	public static final String KEY_HTTP_EQUIV = "KEY_HTTP_EQUIV"; //$NON-NLS-1$
 	public static final String KEY_MOD_RELATIVE_LINKS ="KEY_MOD_RELATIVE_LINKS"; //$NON-NLS-1$
+	public static final String KEY_FORCE_HTML_EXTENSION="KEY_FORCE_HTML_EXTENSION"; //$NON-NLS-1$
 	
 	public static final String NAMESPACE_DTBOOK = "http://www.daisy.org/z3986/2005/dtbook/"; //$NON-NLS-1$
 	public static final String NAMESPACE_XHTML = "http://www.w3.org/1999/xhtml"; //$NON-NLS-1$
