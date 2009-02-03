@@ -26,6 +26,9 @@ import org.daisy.reader.util.TempDir;
 
 public class OpsModelProvider implements IModelProvider {
 
+	private Map<String,Object> xhtmlConfig;
+	private Map<String,Object> dtbookConfig;
+	
 	public Model create(URL content) throws ModelInstantiationException {
 		
 		try {
@@ -79,59 +82,40 @@ public class OpsModelProvider implements IModelProvider {
 			 * Use xml stream to get optimized speed.
 			 */
 			
-			if(isContentDoc(item, packageFile)) {
-				try{														
-					StreamTransformer.transform(item.mItemURL, f, getTransformConfig(item));
-					extracted.add(new PackageFileItem(item.mItemID,item.mHref,dest.toURL(),item.mItemMediaType));
-					continue;
+			if(isContentDoc(item, packageFile)) {				
+				try{					
+					StreamTransformer.transform(item.mItemURL, f, getTransformConfig(item));					
 				} catch (Exception e) {
 					Activator.getDefault().logError(e.getMessage(), e);
-				}				
-			}
-			try{
-				copyFile(item.mItemURL,f);
-			}catch (IOException e) {
-				Activator.getDefault().logError(e.getLocalizedMessage(), e);
-			}
-//			if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){					
-//				try{									
-//					Dtbook.htmlize(item.mItemURL, f);
-//				} catch (Exception e) {
-//					Activator.getDefault().logError(e.getMessage(), e);
-//					copyFile(item.mItemURL,f);
-//				}	
-//			} else if(item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_XHTML_XML)){
-//				try{									
-//					XmlUtils.stripDocType(item.mItemURL, f);
-//				} catch (Exception e) {
-//					Activator.getDefault().logError(e.getMessage(), e);
-//					copyFile(item.mItemURL,f);
-//				}				
-//			}
-//			else {			
-//				try{
-//					copyFile(item.mItemURL,f);
-//				}catch (IOException e) {
-//					Activator.getDefault().logError(e.getLocalizedMessage(), e);
-//				}	
-//			}
-			
-//			if(isContentDoc(item, packageFile)) {
-//				extracted.add(new PackageFileItem(item.mItemID,item.mHref,dest.toURL(),item.mItemMediaType));
-//			}	
+					try{
+						copyFile(item.mItemURL,f);
+					}catch (IOException ioe) {
+						e.printStackTrace();
+						Activator.getDefault().logError(ioe.getLocalizedMessage(), ioe);
+						continue;
+					}
+				}
+				
+				extracted.add(new PackageFileItem(item.mItemID,item.mHref,f.toURI().toURL(),item.mItemMediaType));
+			}else{
+				try{
+					copyFile(item.mItemURL,f);
+				}catch (IOException e) {
+					Activator.getDefault().logError(e.getLocalizedMessage(), e);
+				}
+			}			
 		}
 		return extracted;
 	}
 
-	Map<String,Object> xhtmlConfig;
-	Map<String,Object> dtbookConfig;
 	private Map<String,Object> getTransformConfig(PackageFileItem item) {
 		if (item.mItemMediaType.equals(MIMEConstants.MIME_APPLICATION_X_DTBOOK_XML)){
 			if(dtbookConfig==null) {
 				dtbookConfig = new HashMap<String,Object>();
 				dtbookConfig.put(StreamTransformer.KEY_DTD, "");
 				dtbookConfig.put(StreamTransformer.KEY_HTTP_EQUIV, Boolean.TRUE);
-				
+				//dtbookConfig.put(StreamTransformer.KEY_FORCE_HTML_EXTENSION, Boolean.TRUE);
+								
 				Map<String,String> nsMap = new HashMap<String,String>();
 				nsMap.put(StreamTransformer.NAMESPACE_DTBOOK, StreamTransformer.NAMESPACE_XHTML);
 				dtbookConfig.put(StreamTransformer.KEY_NAMESPACE_MAP, nsMap);
@@ -148,6 +132,7 @@ public class OpsModelProvider implements IModelProvider {
 			xhtmlConfig = new HashMap<String,Object>();
 			xhtmlConfig.put(StreamTransformer.KEY_DTD, "");
 			xhtmlConfig.put(StreamTransformer.KEY_HTTP_EQUIV, Boolean.TRUE);
+			//xhtmlConfig.put(StreamTransformer.KEY_FORCE_HTML_EXTENSION, Boolean.TRUE);
 		}
 		return xhtmlConfig;
 		
@@ -171,7 +156,7 @@ public class OpsModelProvider implements IModelProvider {
 		}		
 		return false;
 	}
-		
+			
 	private INavigation getNcx(URL url) {
 		Ncx ncx = new Ncx();
 		ncx.load(url);

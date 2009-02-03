@@ -39,63 +39,59 @@ public class OpsModel extends Model {
 		this.spine = spine;
 		this.tempdir = tempdir;
 		//since getPosition must never return null, set currentPosition to the very start
-		try {
-			this.currentPosition = new URIPosition(this.spine.get(0).mHref,new File(tempdir,"dummy.opf").toURI().toURL()); //$NON-NLS-1$
+		try {						
+			this.currentPosition = validate(new URIPosition(this.spine.get(0).mHref,new File(tempdir,"dummy.opf").toURI().toURL())); //$NON-NLS-1$
 		} catch (MalformedURLException e) {			
 			e.printStackTrace();
 		}
 	}
 	
-	boolean firstCall = true;
+	
 	@Override
 	public URIPosition getPosition() {		
-		if(firstCall) {
-			//System.err.println("On first call to getPosition, OpsModel returns " + currentPosition.toString());
-			firstCall = false;
-		}
-		return currentPosition;
+		return this.currentPosition;
 	}
 
 	@Override
 	public boolean setPosition(IPosition position) {
-		//System.err.println("OpsModel#setPosition: " + position!=null?position.toString():"null");
-		
-		/*
-		 * This method should return false if
-		 * repositioning fails.
-		 */
-		if(position==null || this.isDisposed()) return false;
+				
+		if(position==null || this.isDisposed() 
+				|| !(position instanceof URIPosition)) return false;
 		
 		fireStateChangeEvent(new ModelStateChangeEvent(this, ModelState.RELOCATING));
+						
+		URIPosition validated = validate((URIPosition)position);
 		
-		if(position==null) return false;
+		if(validated==null) return false;				
 		
-		URIPosition candidate = (URIPosition)position;
-		
-		if(!isValid(candidate)) return false;				
-		
-		currentPosition = (URIPosition)position;
+		currentPosition = validated;
 		
 		fireStateChangeEvent(new ModelStateChangeEvent(this, ModelState.RELOCATED));
 		
-		firePositionChangeEvent(position);
+		firePositionChangeEvent(currentPosition);
 		
 		return true;
 	}
 	
-	private boolean isValid(URIPosition candidate) {
-				
-		for(PackageFileItem item : this.getSpine()) {
-			try {				
-				if(item.mItemURL.getPath().equals(candidate.getAbsoluteURI().toURL().getPath())) {
-					return true; //we can resolve to a content doc
+	/**
+	 * Return a validated URIPosition or null of the position is not resolvable (excluding fragment checks).
+	 * @param candidate
+	 * @return a URIPosition to broadcast if the position is valid, else null.
+	 */
+	private URIPosition validate(URIPosition candidate) {
+		try {			
+			String candidatePath = candidate.getAbsoluteURI().toURL().getPath();						
+			for(PackageFileItem item : this.getSpine()) {	
+				String itemPath = item.mItemURL.getPath();
+				if(itemPath.equals(candidatePath)) {
+					System.err.println("returning " +candidatePath);
+					return candidate;
 				}
-			} catch (Exception e) {
-				e.printStackTrace();			
 			}
-		}
-		//System.err.println("URIPosition " + candidate.getIdentifier() + " does not resolve to a spine item");
-		return false;
+		} catch (Exception e) {
+			Activator.getDefault().logError(e.getMessage(),e);
+		}		
+		return null;
 	}
 
 	@Override
