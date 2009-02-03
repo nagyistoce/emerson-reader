@@ -84,7 +84,6 @@ public class OpsModel extends Model {
 			for(PackageFileItem item : this.getSpine()) {	
 				String itemPath = item.mItemURL.getPath();
 				if(itemPath.equals(candidatePath)) {
-					System.err.println("returning " +candidatePath);
 					return candidate;
 				}
 			}
