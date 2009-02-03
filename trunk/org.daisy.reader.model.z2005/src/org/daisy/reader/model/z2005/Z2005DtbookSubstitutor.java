@@ -67,7 +67,7 @@ public class Z2005DtbookSubstitutor implements IDtbTextContentSubstitutor {
 			if(errorFiles.contains(path)) return null;
 			
 			if(!substitutes.containsKey(path)) {				
-				File dest = new File(tempdir,URIStringParser.getFileLocalName(path).replace(".xml", ".html")); //$NON-NLS-1$ //$NON-NLS-2$		
+				File dest = new File(tempdir,URIStringParser.getFileLocalName(path));		
 				substitutes.put(path, StreamTransformer.transform(original, dest, getTransformConfig()));				
 			}
 			
@@ -110,6 +110,7 @@ public class Z2005DtbookSubstitutor implements IDtbTextContentSubstitutor {
 			dtbookConfig = new HashMap<String, Object>();
 			dtbookConfig.put(StreamTransformer.KEY_DTD, "");
 			dtbookConfig.put(StreamTransformer.KEY_HTTP_EQUIV, Boolean.TRUE);
+			dtbookConfig.put(StreamTransformer.KEY_FORCE_HTML_EXTENSION, Boolean.TRUE);
 			
 			ArrayList<String> uriAttrs = new ArrayList<String>();
 			uriAttrs.add("src");
