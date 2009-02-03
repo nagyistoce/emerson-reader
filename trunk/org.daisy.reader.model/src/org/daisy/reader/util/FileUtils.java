@@ -93,4 +93,35 @@ public class FileUtils {
 		}
 		return dest;
 	}
+	
+	public static String getNameMinusExtension(File f) {
+		StringBuilder sb = new StringBuilder();
+		String name = f.getName();
+		int end = name.lastIndexOf('.');
+		if(end > 0) {
+			for (int i = 0; i < name.length(); i++) {
+				if(i<end){
+					sb.append(name.charAt(i));
+				}
+			}
+			return sb.toString();
+		}
+		return name;
+	}
+
+	public static String getExtension(File f) {
+		StringBuilder sb = new StringBuilder();
+		String name = f.getName();
+		int start = name.lastIndexOf('.');
+		if(start > 0) {
+			for (int i = 0; i < name.length(); i++) {
+				if(i>start){
+					sb.append(name.charAt(i));
+				}
+			}
+			return sb.toString();
+		}
+		return null;
+	}
+	
 }
