@@ -29,7 +29,7 @@ At the time of writing, Emerson supports only *MP3* encoded DTBs. Neither WAV no
 No it does not. For players (free and commercial) that supports this feature visit [http://www.daisy.org/tools the daisy.org tools page].
 
 == Can Emerson play Daisy text books, like those distributed by Bookshare? ==
-No. Please see *What kinds of DTBs does Raymond support?*  above.
+No. Please see *What kinds of DTBs does Emerson support?*  above.
 
 == Does Emerson support DRM (encrypted) content? ==
 Nope.
