@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" CreateVersion="6.7.1" version="6.7.1" modules="freeware" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_MINJREVERSION" MultiBuildValue="DefaultBuild:1.5" ValueLocId="-"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPHELPLINK" Value="http://code.google.com/p/emerson-reader"/>
+    <ROW Property="ARPPRODUCTICON" Value="controlPanelIcon.exe"/>
+    <ROW Property="ARPURLINFOABOUT" Value="http://code.google.com/p/emerson-reader"/>
+    <ROW Property="BannerBitmap" Value="default_banner.bmp" Type="1"/>
+    <ROW Property="DialogBitmap" Value="default_dialog.bmp" Type="1"/>
+    <ROW Property="Manufacturer" Value="daisy.org" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{96960A8F-BCA5-4C2D-9143-A396414ABE6C} "/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Emerson" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="0.6.2"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{73ED7B74-570C-4EAB-B43D-B12CD004B540}"/>
+    <ROW Property="WindowsFamily9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsFamilyNT64" MultiBuildValue="DefaultBuild:Windows XP/Vista x64" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="META_INF_1_DIR" Directory_Parent="javax.xml.stream_1.0.1_DIR" DefaultDir="META-INF"/>
+    <ROW Directory="META_INF_2_DIR" Directory_Parent="org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026_DIR" DefaultDir="META-INF"/>
+    <ROW Directory="META_INF_3_DIR" Directory_Parent="org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124_1800_DIR" DefaultDir="META-INF"/>
+    <ROW Directory="META_INF_DIR" Directory_Parent="com.ctc.wstx_3.2.6_DIR" DefaultDir="META-INF"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="com.ctc.wstx_3.2.6_DIR" Directory_Parent="plugins_DIR" DefaultDir="comctc~1.6|com.ctc.wstx_3.2.6"/>
+    <ROW Directory="configuration_DIR" Directory_Parent="APPDIR" DefaultDir="config~1|configuration"/>
+    <ROW Directory="javax.xml.stream_1.0.1_DIR" Directory_Parent="plugins_DIR" DefaultDir="javaxx~1.1|javax.xml.stream_1.0.1"/>
+    <ROW Directory="org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026_DIR" Directory_Parent="plugins_DIR" DefaultDir="orgecl~1.v20|org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026"/>
+    <ROW Directory="org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124_1800_DIR" Directory_Parent="plugins_DIR" DefaultDir="orgecl~2.v20|org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800"/>
+    <ROW Directory="plugins_DIR" Directory_Parent="APPDIR" DefaultDir="plugins"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="MANIFEST.MF" ComponentId="{22A038BE-49C2-4BB5-9430-608BB78F5489}" Directory_="META_INF_DIR" Attributes="0" KeyPath="MANIFEST.MF" Type="0"/>
+    <ROW Component="MANIFEST.MF_1" ComponentId="{46138889-CB63-49F8-B90C-CDFDCC85B4CF}" Directory_="META_INF_1_DIR" Attributes="0" KeyPath="MANIFEST.MF_1" Type="0"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{9FC495E9-2855-4EB6-9FEF-DC1F373FADD9}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="about.html" ComponentId="{28D7B187-2832-4A28-9C9F-57F901F80F5F}" Directory_="org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026_DIR" Attributes="0" KeyPath="about.html" Type="0"/>
+    <ROW Component="about.html_1" ComponentId="{54995E01-B790-4833-AC5F-B67E9A046427}" Directory_="org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124_1800_DIR" Attributes="0" KeyPath="about.html_1" Type="0"/>
+    <ROW Component="com.ibm.icu.base_3.8.1.v20080530.jar" ComponentId="{94F0E2E2-7E08-4A84-9CA3-017815B83646}" Directory_="plugins_DIR" Attributes="0" KeyPath="com.ibm.icu.base_3.8.1.v20080530.jar" Type="0"/>
+    <ROW Component="com_1200.dll" ComponentId="{ACAAEF3D-8FB6-4F0C-BCB6-0DA373710619}" Directory_="org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124_1800_DIR" Attributes="0" KeyPath="com_1200.dll"/>
+    <ROW Component="config.ini" ComponentId="{26FB7C93-EEC1-4FF9-BF3E-AE76A43B6BB6}" Directory_="configuration_DIR" Attributes="0" KeyPath="config.ini" Type="0"/>
+    <ROW Component="eclipse.inf" ComponentId="{3D82372E-23DF-447E-87E0-9497312026AE}" Directory_="META_INF_2_DIR" Attributes="0" KeyPath="eclipse.inf" Type="0"/>
+    <ROW Component="eclipse.inf_1" ComponentId="{83E4663C-3C2E-4E8A-87A5-4A3397C7D12E}" Directory_="META_INF_3_DIR" Attributes="0" KeyPath="eclipse.inf_1" Type="0"/>
+    <ROW Component="eclipse_1200.dll" ComponentId="{DFD1C67A-3A64-46CE-BF41-CBB9C0BDD021}" Directory_="org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124_1800_DIR" Attributes="0" KeyPath="eclipse_1200.dll"/>
+    <ROW Component="eclipseproduct" ComponentId="{1FCB7155-E6EE-4AFF-A348-0E9BA1580A53}" Directory_="APPDIR" Attributes="0" KeyPath="eclipseproduct" Type="0"/>
+    <ROW Component="emerson.exe" ComponentId="{DC2AF5BC-867C-4A10-8AC0-D800D4FEFF40}" Directory_="APPDIR" Attributes="0" KeyPath="emerson.exe"/>
+    <ROW Component="stax_api_1.0.1.jar" ComponentId="{3299BCEF-1EE1-4758-AD27-DBE53E80257B}" Directory_="javax.xml.stream_1.0.1_DIR" Attributes="0" KeyPath="stax_api_1.0.1.jar" Type="0"/>
+    <ROW Component="wstx_lgpl_3.2.6.jar" ComponentId="{1F4E71F0-6001-402A-A981-80C3DF6188F1}" Directory_="com.ctc.wstx_3.2.6_DIR" Attributes="0" KeyPath="wstx_lgpl_3.2.6.jar" Type="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="config.ini eclipseproduct emerson.exe SHORTCUTDIR MANIFEST.MF wstx_lgpl_3.2.6.jar com.ibm.icu.base_3.8.1.v20080530.jar MANIFEST.MF_1 stax_api_1.0.1.jar about.html eclipse.inf about.html_1 com_1200.dll eclipse_1200.dll eclipse.inf_1"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="ECLIPSE.RSA" Component_="eclipse.inf" FileName="ECLIPSE.RSA" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\META-INF\ECLIPSE.RSA" SelfReg="false" Sequence="38"/>
+    <ROW File="ECLIPSE.RSA_1" Component_="eclipse.inf_1" FileName="ECLIPSE.RSA" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\META-INF\ECLIPSE.RSA" SelfReg="false" Sequence="50"/>
+    <ROW File="ECLIPSE.SF" Component_="eclipse.inf" FileName="ECLIPSE.SF" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\META-INF\ECLIPSE.SF" SelfReg="false" Sequence="39"/>
+    <ROW File="ECLIPSE.SF_1" Component_="eclipse.inf_1" FileName="ECLIPSE.SF" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\META-INF\ECLIPSE.SF" SelfReg="false" Sequence="51"/>
+    <ROW File="MANIFEST.MF" Component_="MANIFEST.MF" FileName="MANIFEST.MF" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\com.ctc.wstx_3.2.6\META-INF\MANIFEST.MF" SelfReg="false" Sequence="5"/>
+    <ROW File="MANIFEST.MF_1" Component_="MANIFEST.MF_1" FileName="MANIFEST.MF" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\javax.xml.stream_1.0.1\META-INF\MANIFEST.MF" SelfReg="false" Sequence="11"/>
+    <ROW File="MANIFEST.MF_2" Component_="eclipse.inf" FileName="MANIFEST.MF" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\META-INF\MANIFEST.MF" SelfReg="false" Sequence="40"/>
+    <ROW File="MANIFEST.MF_3" Component_="eclipse.inf_1" FileName="MANIFEST.MF" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\META-INF\MANIFEST.MF" SelfReg="false" Sequence="52"/>
+    <ROW File="about.html" Component_="about.html" FileName="about~1.htm|about.html" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\about.html" SelfReg="false" Sequence="35"/>
+    <ROW File="about.html_1" Component_="about.html_1" FileName="about~1.htm|about.html" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\about.html" SelfReg="false" Sequence="45"/>
+    <ROW File="com.ibm.icu.base_3.8.1.v20080530.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="comibm~1.jar|com.ibm.icu.base_3.8.1.v20080530.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\com.ibm.icu.base_3.8.1.v20080530.jar" SelfReg="false" Sequence="7"/>
+    <ROW File="com.javazoom.javalayer.kit_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="comjav~1.jar|com.javazoom.javalayer.kit_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\com.javazoom.javalayer.kit_0.6.0.jar" SelfReg="false" Sequence="8"/>
+    <ROW File="com.javazoom.javalayer_1.0.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="comjav~2.jar|com.javazoom.javalayer_1.0.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\com.javazoom.javalayer_1.0.0.jar" SelfReg="false" Sequence="9"/>
+    <ROW File="com_1200.dll" Component_="com_1200.dll" FileName="com_1200.dll" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\com_1200.dll" SelfReg="false" Sequence="46"/>
+    <ROW File="config.ini" Component_="config.ini" FileName="config.ini" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\configuration\config.ini" SelfReg="false" Sequence="1"/>
+    <ROW File="eclipse.inf" Component_="eclipse.inf" FileName="eclipse.inf" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\META-INF\eclipse.inf" SelfReg="false" Sequence="37"/>
+    <ROW File="eclipse.inf_1" Component_="eclipse.inf_1" FileName="eclipse.inf" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\META-INF\eclipse.inf" SelfReg="false" Sequence="49"/>
+    <ROW File="eclipse_1200.dll" Component_="eclipse_1200.dll" FileName="eclips~1.dll|eclipse_1200.dll" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\eclipse_1200.dll" SelfReg="false" Sequence="47"/>
+    <ROW File="eclipseproduct" Component_="eclipseproduct" FileName="eclips~1|.eclipseproduct" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\.eclipseproduct" SelfReg="false" Sequence="2"/>
+    <ROW File="emerson.exe" Component_="emerson.exe" FileName="emerson.exe" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\emerson.exe" SelfReg="false" Sequence="3"/>
+    <ROW File="emerson.ini" Component_="eclipseproduct" FileName="emerson.ini" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\emerson.ini" SelfReg="false" Sequence="4"/>
+    <ROW File="emerson_release_notes.txt" Component_="eclipseproduct" FileName="emerso~1.txt|emerson-release-notes.txt" Attributes="0" SourcePath="..\etc\emerson-release-notes.txt" SelfReg="false" Sequence="70"/>
+    <ROW File="epl_v10" Component_="eclipseproduct" FileName="epl-v10" Attributes="0" SourcePath="..\etc\epl-v10" SelfReg="false" Sequence="69"/>
+    <ROW File="fragment.properties" Component_="about.html" FileName="fragme~1.pro|fragment.properties" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\fragment.properties" SelfReg="false" Sequence="36"/>
+    <ROW File="javax.servlet_2.5.0.v200806031605.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="javaxs~1.jar|javax.servlet_2.5.0.v200806031605.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\javax.servlet_2.5.0.v200806031605.jar" SelfReg="false" Sequence="10"/>
+    <ROW File="launcher.wpf.win32.x86.properties" Component_="about.html_1" FileName="launch~1.pro|launcher.wpf.win32.x86.properties" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher.wpf.win32.x86_1.0.200.v20081124-1800\launcher.wpf.win32.x86.properties" SelfReg="false" Sequence="48"/>
+    <ROW File="org.daisy.emerson.ui.browser_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~1.jar|org.daisy.emerson.ui.browser_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.emerson.ui.browser_0.6.0.jar" SelfReg="false" Sequence="13"/>
+    <ROW File="org.daisy.emerson.ui.dtb_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~2.jar|org.daisy.emerson.ui.dtb_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.emerson.ui.dtb_0.6.0.jar" SelfReg="false" Sequence="14"/>
+    <ROW File="org.daisy.emerson.ui.library_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~3.jar|org.daisy.emerson.ui.library_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.emerson.ui.library_0.6.0.jar" SelfReg="false" Sequence="15"/>
+    <ROW File="org.daisy.emerson.ui.navigator_0.1.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~4.jar|org.daisy.emerson.ui.navigator_0.1.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.emerson.ui.navigator_0.1.0.jar" SelfReg="false" Sequence="16"/>
+    <ROW File="org.daisy.emerson.ui.notes_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~5.jar|org.daisy.emerson.ui.notes_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.emerson.ui.notes_0.6.0.jar" SelfReg="false" Sequence="17"/>
+    <ROW File="org.daisy.emerson.ui_0.6.2.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~6.jar|org.daisy.emerson.ui_0.6.2.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.emerson.ui_0.6.2.jar" SelfReg="false" Sequence="18"/>
+    <ROW File="org.daisy.reader.history_0.1.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~7.jar|org.daisy.reader.history_0.1.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.history_0.1.0.jar" SelfReg="false" Sequence="19"/>
+    <ROW File="org.daisy.reader.model.d202_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~8.jar|org.daisy.reader.model.d202_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.model.d202_0.6.0.jar" SelfReg="false" Sequence="20"/>
+    <ROW File="org.daisy.reader.model.dtb_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgdai~9.jar|org.daisy.reader.model.dtb_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.model.dtb_0.6.0.jar" SelfReg="false" Sequence="21"/>
+    <ROW File="org.daisy.reader.model.ops_0.6.1.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgda~10.jar|org.daisy.reader.model.ops_0.6.1.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.model.ops_0.6.1.jar" SelfReg="false" Sequence="22"/>
+    <ROW File="org.daisy.reader.model.z2005_0.6.2.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgda~11.jar|org.daisy.reader.model.z2005_0.6.2.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.model.z2005_0.6.2.jar" SelfReg="false" Sequence="23"/>
+    <ROW File="org.daisy.reader.model_0.6.2.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgda~12.jar|org.daisy.reader.model_0.6.2.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.model_0.6.2.jar" SelfReg="false" Sequence="24"/>
+    <ROW File="org.daisy.reader.ncx_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgda~13.jar|org.daisy.reader.ncx_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.ncx_0.6.0.jar" SelfReg="false" Sequence="25"/>
+    <ROW File="org.daisy.reader.notes_0.6.0.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgda~14.jar|org.daisy.reader.notes_0.6.0.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.daisy.reader.notes_0.6.0.jar" SelfReg="false" Sequence="26"/>
+    <ROW File="org.eclipse.core.commands_3.5.0.I20081202_0800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~1.jar|org.eclipse.core.commands_3.5.0.I20081202-0800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.commands_3.5.0.I20081202-0800.jar" SelfReg="false" Sequence="27"/>
+    <ROW File="org.eclipse.core.contenttype_3.4.0.v20081211_0735.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~2.jar|org.eclipse.core.contenttype_3.4.0.v20081211-0735.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.contenttype_3.4.0.v20081211-0735.jar" SelfReg="false" Sequence="28"/>
+    <ROW File="org.eclipse.core.databinding_1.2.0.I20081207_0800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~3.jar|org.eclipse.core.databinding_1.2.0.I20081207-0800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.databinding_1.2.0.I20081207-0800.jar" SelfReg="false" Sequence="29"/>
+    <ROW File="org.eclipse.core.expressions_3.4.100.v20081209_0100.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~4.jar|org.eclipse.core.expressions_3.4.100.v20081209-0100.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.expressions_3.4.100.v20081209-0100.jar" SelfReg="false" Sequence="30"/>
+    <ROW File="org.eclipse.core.filesystem.win32.x86_1.1.0.v20080604_1400.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~5.jar|org.eclipse.core.filesystem.win32.x86_1.1.0.v20080604-1400.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.filesystem.win32.x86_1.1.0.v20080604-1400.jar" SelfReg="false" Sequence="31"/>
+    <ROW File="org.eclipse.core.filesystem_1.2.0.v20081117.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~6.jar|org.eclipse.core.filesystem_1.2.0.v20081117.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.filesystem_1.2.0.v20081117.jar" SelfReg="false" Sequence="32"/>
+    <ROW File="org.eclipse.core.jobs_3.4.100.v20081201.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~7.jar|org.eclipse.core.jobs_3.4.100.v20081201.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.jobs_3.4.100.v20081201.jar" SelfReg="false" Sequence="33"/>
+    <ROW File="org.eclipse.core.runtime.compatibility.auth_3.2.100.v20070502.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~8.jar|org.eclipse.core.runtime.compatibility.auth_3.2.100.v20070502.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.auth_3.2.100.v20070502.jar" SelfReg="false" Sequence="34"/>
+    <ROW File="org.eclipse.core.runtime_3.5.0.v20081110.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgecl~9.jar|org.eclipse.core.runtime_3.5.0.v20081110.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime_3.5.0.v20081110.jar" SelfReg="false" Sequence="42"/>
+    <ROW File="org.eclipse.equinox.app_1.2.0.v20081205_1800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~10.jar|org.eclipse.equinox.app_1.2.0.v20081205-1800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.app_1.2.0.v20081205-1800.jar" SelfReg="false" Sequence="43"/>
+    <ROW File="org.eclipse.equinox.common_3.5.0.v20081201_1815.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~11.jar|org.eclipse.equinox.common_3.5.0.v20081201-1815.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.common_3.5.0.v20081201-1815.jar" SelfReg="false" Sequence="44"/>
+    <ROW File="org.eclipse.equinox.launcher_1.0.200.v20081201_1815.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~12.jar|org.eclipse.equinox.launcher_1.0.200.v20081201-1815.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.launcher_1.0.200.v20081201-1815.jar" SelfReg="false" Sequence="53"/>
+    <ROW File="org.eclipse.equinox.preferences_3.2.300.v20081205_1800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~13.jar|org.eclipse.equinox.preferences_3.2.300.v20081205-1800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.preferences_3.2.300.v20081205-1800.jar" SelfReg="false" Sequence="54"/>
+    <ROW File="org.eclipse.equinox.registry_3.4.100.v20081024_1200.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~14.jar|org.eclipse.equinox.registry_3.4.100.v20081024-1200.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.registry_3.4.100.v20081024-1200.jar" SelfReg="false" Sequence="55"/>
+    <ROW File="org.eclipse.equinox.security.win32.x86.source_1.0.100.v20080722_0430." Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~15.jar|org.eclipse.equinox.security.win32.x86.source_1.0.100.v20080722-0430.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.security.win32.x86.source_1.0.100.v20080722-0430.jar" SelfReg="false" Sequence="56"/>
+    <ROW File="org.eclipse.equinox.security.win32.x86_1.0.100.v20080722_0430.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~16.jar|org.eclipse.equinox.security.win32.x86_1.0.100.v20080722-0430.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.security.win32.x86_1.0.100.v20080722-0430.jar" SelfReg="false" Sequence="57"/>
+    <ROW File="org.eclipse.equinox.security_1.0.100.v20080722_0430.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~17.jar|org.eclipse.equinox.security_1.0.100.v20080722-0430.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.equinox.security_1.0.100.v20080722-0430.jar" SelfReg="false" Sequence="58"/>
+    <ROW File="org.eclipse.help_3.4.0.v20081208.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~18.jar|org.eclipse.help_3.4.0.v20081208.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.help_3.4.0.v20081208.jar" SelfReg="false" Sequence="59"/>
+    <ROW File="org.eclipse.jface.databinding_1.3.0.I20081026_2000.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~19.jar|org.eclipse.jface.databinding_1.3.0.I20081026-2000.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.jface.databinding_1.3.0.I20081026-2000.jar" SelfReg="false" Sequence="60"/>
+    <ROW File="org.eclipse.jface_3.5.0.I20081208_1300.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~20.jar|org.eclipse.jface_3.5.0.I20081208-1300.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.jface_3.5.0.I20081208-1300.jar" SelfReg="false" Sequence="61"/>
+    <ROW File="org.eclipse.osgi.services_3.2.0.v20081205_1800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~21.jar|org.eclipse.osgi.services_3.2.0.v20081205-1800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.osgi.services_3.2.0.v20081205-1800.jar" SelfReg="false" Sequence="62"/>
+    <ROW File="org.eclipse.osgi_3.5.0.v20081201_1815.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~22.jar|org.eclipse.osgi_3.5.0.v20081201-1815.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.osgi_3.5.0.v20081201-1815.jar" SelfReg="false" Sequence="63"/>
+    <ROW File="org.eclipse.swt.wpf.win32.x86_3.5.0.v3525.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~23.jar|org.eclipse.swt.wpf.win32.x86_3.5.0.v3525.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.swt.wpf.win32.x86_3.5.0.v3525.jar" SelfReg="false" Sequence="64"/>
+    <ROW File="org.eclipse.swt_3.5.0.v3525.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~24.jar|org.eclipse.swt_3.5.0.v3525.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.swt_3.5.0.v3525.jar" SelfReg="false" Sequence="65"/>
+    <ROW File="org.eclipse.ui.views.log_1.0.100.v20080929_1800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~25.jar|org.eclipse.ui.views.log_1.0.100.v20080929-1800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.ui.views.log_1.0.100.v20080929-1800.jar" SelfReg="false" Sequence="66"/>
+    <ROW File="org.eclipse.ui.workbench_3.5.0.I200812010_1800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~26.jar|org.eclipse.ui.workbench_3.5.0.I200812010-1800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.ui.workbench_3.5.0.I200812010-1800.jar" SelfReg="false" Sequence="67"/>
+    <ROW File="org.eclipse.ui_3.5.0.I200812010_1800.jar" Component_="com.ibm.icu.base_3.8.1.v20080530.jar" FileName="orgec~27.jar|org.eclipse.ui_3.5.0.I200812010-1800.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.ui_3.5.0.I200812010-1800.jar" SelfReg="false" Sequence="68"/>
+    <ROW File="runtime_registry_compatibility.jar" Component_="about.html" FileName="runtim~1.jar|runtime_registry_compatibility.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\org.eclipse.core.runtime.compatibility.registry_3.2.200.v20081026\runtime_registry_compatibility.jar" SelfReg="false" Sequence="41"/>
+    <ROW File="stax_api_1.0.1.jar" Component_="stax_api_1.0.1.jar" FileName="stax-a~1.jar|stax-api-1.0.1.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\javax.xml.stream_1.0.1\stax-api-1.0.1.jar" SelfReg="false" Sequence="12"/>
+    <ROW File="wstx_lgpl_3.2.6.jar" Component_="wstx_lgpl_3.2.6.jar" FileName="wstx-l~1.jar|wstx-lgpl-3.2.6.jar" Attributes="0" SourcePath="..\pde\win32.wpf.x86\emerson\plugins\com.ctc.wstx_3.2.6\wstx-lgpl-3.2.6.jar" SelfReg="false" Sequence="6"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageName="emerson-wpf-x86-[|ProductVersion]" Languages="en" InstallationType="4"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_FRAGS&gt;FolderDlg.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_FRAGS&gt;UI.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="default_banner.bmp" SourcePath="&lt;AI_RES&gt;default-banner.bmp"/>
+    <ROW Name="default_dialog.bmp" SourcePath="&lt;AI_RES&gt;default-dialog.bmp"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ATTRIBUTE name="FixedSizeBitmaps" value="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="3"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DetectJRE" Type="1" Source="aicustact.dll" Target="RequiredJreExists"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFilesFolder][ProductName]-wpf"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="controlPanelIcon.exe" SourcePath="..\..\org.daisy.emerson.ui\icons\goggle.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIniFileComponent">
+    <ROW IniFile="URL" FileName="Emerso~1.url|Emerson homepage.url" DirProperty="SHORTCUTDIR" Section="InternetShortcut" Key="URL" Value="http://code.google.com/p/emerson-reader" Action="0" Component_="SHORTCUTDIR"/>
+    <ROW IniFile="URL_1" FileName="License.url" DirProperty="SHORTCUTDIR" Section="InternetShortcut" Key="URL" Value="http://www.eclipse.org/legal/epl-v10.html" Action="0" Component_="SHORTCUTDIR"/>
+    <ROW IniFile="WorkingDirectory" FileName="Emerso~1.url|Emerson homepage.url" DirProperty="SHORTCUTDIR" Section="InternetShortcut" Key="WorkingDirectory" Value="[SHORTCUTDIR]" Action="0" Component_="SHORTCUTDIR"/>
+    <ROW IniFile="WorkingDirectory_1" FileName="License.url" DirProperty="SHORTCUTDIR" Section="InternetShortcut" Key="WorkingDirectory" Value="[SHORTCUTDIR]" Action="0" Component_="SHORTCUTDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="Not Installed" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_DetectJRE" Condition="1" Sequence="399" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_DetectJRE" Condition="1" Sequence="399" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="AI_JREVERFOUND = 1" Description="[ProductName] cannot be installed on systems with JRE version smaller than [AI_MINJREVERSION]" DescriptionLocId="AI.LaunchCondition.Jre" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="Version9X OR (VersionNT AND (NOT VersionNT64))" Description="[ProductName] cannot be installed on [WindowsFamilyNT64]" DescriptionLocId="AI.LaunchCondition.NoNT64" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsFamily9X]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Emerson" Directory_="DesktopFolder" Name="Emerson" Component_="emerson.exe" Target="[#emerson.exe]" Hotkey="0" Icon_="controlPanelIcon.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="emerson" Directory_="SHORTCUTDIR" Name="Emerson" Component_="emerson.exe" Target="[#emerson.exe]" Hotkey="0" Icon_="controlPanelIcon.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+</DOCUMENT>

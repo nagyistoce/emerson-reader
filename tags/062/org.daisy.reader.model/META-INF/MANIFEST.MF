@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Reader Base Model
+Bundle-SymbolicName: org.daisy.reader.model;singleton:=true
+Bundle-Version: 0.6.2
+Bundle-Activator: org.daisy.reader.Activator
+Bundle-Vendor: daisy.org
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0",
+ org.eclipse.ui;bundle-version="3.4.0",
+ com.ctc.wstx;bundle-version="3.2.6"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5 
+Export-Package: org.daisy.reader.model,
+ org.daisy.reader.model.adapt,
+ org.daisy.reader.model.audio,
+ org.daisy.reader.model.exception,
+ org.daisy.reader.model.metadata,
+ org.daisy.reader.model.navigation,
+ org.daisy.reader.model.position,
+ org.daisy.reader.model.position.memento,
+ org.daisy.reader.model.property,
+ org.daisy.reader.model.provide,
+ org.daisy.reader.model.semantic,
+ org.daisy.reader.model.smil,
+ org.daisy.reader.model.state,
+ org.daisy.reader.util
+Import-Package: javax.xml.stream;version="1.0.1",
+ javax.xml.stream.events;version="1.0.1"

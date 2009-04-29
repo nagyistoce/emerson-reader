@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Views Category"
+            id="org.daisy.emerson.ui.views">
+      </category>
+   </extension>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.daisy.emerson.ui.Application">
+         </run>
+      </application>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="%perspective.name.default"
+            class="org.daisy.emerson.ui.DefaultPerspective"
+            id="org.daisy.emerson.ui.perspectives.default">
+      </perspective>      
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.OpenPublicationHandler"
+            id="org.daisy.emerson.commands.open"
+            name="%command.name.open">
+      </command>
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.DebugOpenHandler"
+            id="org.daisy.emerson.commands.debugload"
+            name="Debugload">
+            <commandParameter
+                  id="debugfile"
+                  name="debugfile"
+                  optional="false"
+                  typeId="org.eclipse.ui.ide.resourcePath">                  
+            </commandParameter>
+      </command>            
+      <command      			
+            id="org.daisy.emerson.commands.close"
+            name="%command.name.close">
+      </command>
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.ExitHandler"
+            id="org.daisy.emerson.commands.exit"
+            name="%command.name.exit">
+      </command>
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.ShowAboutDialogHandler"
+            description="%command.description.showAbout"
+            id="org.daisy.emerson.commands.about"
+            name="%command.name.about">
+      </command>
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.ShowKeyBindingDialogHandler"
+            description="%command.description.showKeyAssist"
+            id="org.daisy.emerson.commands.keybindingDialog"
+            name="%command.name.keyAssist">
+      </command>
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.ResetPerspectiveHandler"
+            id="org.daisy.emerson.commands.resetPerspective"
+            name="%command.name.resetPerspective">
+      </command>
+      <!--
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.MinimizeViewHandler"
+            id="org.daisy.emerson.commands.view.minimize"
+            name="Minimize View">
+      </command>  
+      -->  
+      <command
+            defaultHandler="org.daisy.emerson.ui.handlers.CloseViewHandler"
+            id="org.daisy.emerson.commands.view.close"
+            name="%command.name.closeView">
+            <commandParameter
+                  id="org.daisy.emerson.ui.views.close.viewID"
+                  name="org.daisy.emerson.ui.views.close.viewID"
+                  optional="false">
+            </commandParameter>
+      </command>   
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.daisy.emerson.ui.handlers.ClosePublicationHandler"
+            commandId="org.daisy.emerson.commands.close">            
+            <activeWhen>
+				<reference
+	            	definitionId="org.daisy.reader.model.IsLoaded">
+	            </reference>	        
+	        </activeWhen>
+	        <enabledWhen>
+           		<reference
+	            	definitionId="org.daisy.reader.model.IsLoaded">
+	            </reference>
+	        </enabledWhen>	              
+	  </handler>
+         
+   </extension>          
+   
+   <extension
+         point="org.eclipse.ui.bindings">
+      <scheme
+            description="%scheme.description.emersonDefault"
+            id="org.daisy.emerson.defaultAcceleratorConfiguration"
+            name="%scheme.name.emersonDefault">
+            <!-- parentId="org.eclipse.ui.defaultAcceleratorConfiguration" -->
+      </scheme>
+      <key
+            commandId="org.daisy.emerson.commands.open"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"
+            sequence="M1+O">
+      </key>
+      <key
+            commandId="org.daisy.emerson.commands.close"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"
+            sequence="M1+W">
+      </key>
+      <key
+            commandId="org.daisy.emerson.commands.exit"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"
+            sequence="M1+Q">
+      </key>
+      <key
+            commandId="org.daisy.emerson.commands.keybindingDialog"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"
+            sequence="M1+K">
+      </key>      
+   </extension>
+
+<extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="org.daisy.emerson.menus.FileMenu"
+               label="%menu.label.File"
+               mnemonic="%menu.mnemonic.File">
+            <command
+                  commandId="org.daisy.emerson.commands.exit"
+                  id="org.daisy.emerson.menus.FileMenu.exit"
+                  mnemonic="%command.mnemonic.exit">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.daisy.emerson.menus.FileMenu?before=org.daisy.emerson.menus.FileMenu.exit">
+         <command 
+               commandId="org.daisy.emerson.commands.open"
+               mnemonic="%command.mnemonic.open">
+         </command>
+         <command
+               commandId="org.daisy.emerson.commands.close"
+               mnemonic="%command.mnemonic.close">
+         </command>
+         <separator
+               name="org.daisy.emerson.menus.FileMenu.separator2"
+               visible="true">
+         </separator>
+     
+      </menuContribution>
+     
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=org.daisy.emerson.menus.ControlMenu">
+         <menu
+               id="org.daisy.emerson.menus.WindowMenu"
+               label="%menu.label.Window"
+               mnemonic="%menu.mnemonic.Window">
+            <menu
+                  id="org.daisy.emerson.menus.ShowViewMenu"
+                  label="%menu.label.gotoView">
+            </menu>
+            <separator
+                  name="org.daisy.emerson.menus.main.window.separator1"
+                  visible="true">
+            </separator>
+            <command
+               commandId="org.eclipse.ui.window.preferences">
+            </command> 
+            <separator
+                  name="org.daisy.emerson.menus.main.window.separator2"
+                  visible="true">
+            </separator>            
+            <command
+                  commandId="org.daisy.emerson.commands.resetPerspective"
+                  id="org.daisy.emerson.menus.main.resetPerspective">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=org.daisy.emerson.menus.WindowMenu">
+         <menu
+               id="org.daisy.emerson.menus.HelpMenu"
+               label="%menu.label.help"
+               mnemonic="%menu.mnemonic.help">
+               <command
+                  commandId="org.daisy.emerson.commands.keybindingDialog">
+               </command>
+            <menu
+                  id="org.daisy.emerson.menus.HelpMenu.AdvancedMenu"
+                  label="%menu.label.advanced"
+                  mnemonic="%menu.mnemonic.advanced">
+               <command
+                     commandId="org.eclipse.ui.views.showView"
+                     icon="icons/error_log.gif"
+                     id="org.daisy.emerson.ui.main.menu.showErrorLog"
+                     label="%command.label.errorLog"
+                     mnemonic="%command.mnemonic.errorLog">
+                  <parameter
+                        name="org.eclipse.ui.views.showView.viewId"                        	  
+                        value="org.eclipse.pde.runtime.LogView">                        
+                  </parameter>
+               </command>
+            </menu>
+            <separator
+                  name="org.daisy.emerson.menus.HelpMenu.separator1"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.daisy.emerson.commands.about">
+            </command>
+         </menu>
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+            
+         <toolbar
+               id="org.daisy.emerson.ui.main.toolbar.file">
+            <separator
+                  name="org.daisy.emerson.main.toolbarseparator0"
+                  visible="true">
+            </separator>            
+            <command
+                  commandId="org.daisy.emerson.commands.open"
+                  icon="icons/open-32x32.png"
+                  >
+            </command>
+            <command
+                  commandId="org.daisy.emerson.commands.close"
+                  icon="icons/close-32x32.png"
+                  disabledIcon="icons/close-disabled-32x32.png"
+                  >
+            </command>
+            <separator
+                  name="org.daisy.emerson.main.fileseparator"
+                  visible="true">
+            </separator>
+			
+         </toolbar>
+      </menuContribution>
+      
+      
+   </extension>
+
+
+	<extension
+         point="org.eclipse.ui.commandImages">
+       <image
+            commandId="org.daisy.emerson.commands.open"
+            icon="icons/open-16x16.png">
+      </image>
+      <image
+            commandId="org.daisy.emerson.commands.close"
+            disabledIcon="icons/close-disabled-16x16.png"
+            icon="icons/close-16x16.png">
+      </image>
+         
+   </extension>
+
+ <extension
+       id="product"
+       point="org.eclipse.core.runtime.products">
+    <product
+          application="org.daisy.emerson.ui.application"
+          name="%product.name">
+          
+        <property
+         name="preferenceCustomization"
+         value="plugin_customization.ini">
+   		</property>
+        <property
+              name="appName"
+              value="%product.name">
+        </property>
+        <property
+              name="aboutImage"
+              value="icons/goggle-about.png">
+        </property>
+        <property
+              name="aboutText"
+              value="Emerson: Epub and DAISY Reader&#x0A;Version: 0.6.2&#x0A;http://code.google.com/p/emerson-reader&#x0A;&#x0A;Read more at&#x0A;http://www.idpf.org&#x0A;http://www.daisy.org">
+        </property>
+        <property
+              name="startupProgressRect"
+              value="10,200,380,15">
+        </property>
+        <property
+              name="windowImages"
+              value="icons/goggle-16x16x32.png,icons/goggle-32x32x32.png,icons/goggle-48x48x32.png,icons/goggle-64x64x32.png,icons/goggle-128x128x32.png">
+        </property>
+          
+    </product>
+   
+ </extension>
+ 
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.daisy.emerson.ui.preferences.UIPreferencePage"
+            id="org.daisy.emerson.preferences.UIPreferencePage"
+            name="%page.name.userInterface">
+      </page>      
+      <!--
+      <page
+            class="org.eclipse.ui.ExtensionFactory:appearancePreferencePage"
+            id="org.daisy.emerson.preferences.appearance"
+            name="Appearance"/>
+      <page
+            class="org.eclipse.ui.ExtensionFactory:newKeysPreferencePage"
+            id="org.daisy.emerson.preferences.keys"
+            name="Keys"/>
+            -->            
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.daisy.emerson.ui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.presentationFactories">
+      <factory
+            class="org.daisy.emerson.ui.AccessiblePresentationFactory"
+            id="org.daisy.emerson.ui.AccessiblePresentationFactory"
+            name="Emerson Presentation Factory">
+      </factory>
+   </extension> 
+   
+   
+</plugin>
