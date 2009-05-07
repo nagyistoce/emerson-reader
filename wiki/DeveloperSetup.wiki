@@ -5,7 +5,7 @@ Install Java 5 JDK or later. OpenJDK should work, but has not been extensively t
 
 Install Eclipse 3.4.1 or later.
 
-Download the target platform zip provided in the downloads section, alternatively create a target platform using vanilla 3.4.1 downloads from eclipse.org, and extract to a different location than Eclipse's default plugin folder.
+Download the target platform zip provided in the downloads section, alternatively create a target platform using vanilla 3.5 Mn downloads from eclipse.org, and extract to a different location than Eclipse's default plugin folder.
 
 In "Preferences/Plug-in Development/Target platform", set the Location path to the root directory created in the step above. Reload.
 
