@@ -32,4 +32,7 @@ No it does not. For players (free and commercial) that supports this feature vis
 No. Please see *What kinds of DTBs does Emerson support?*  above.
 
 == Does Emerson support DRM (encrypted) content? ==
-Nope.
+No.
+
+== Is Emerson self-voicing? ==
+No. Emerson is intended to work directly with the users own access devices, such as screen readers for voicing. 
