@@ -14,13 +14,9 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 	private static final String DAISY_PREF_PAGE_PREFIX ="org.daisy"; //$NON-NLS-1$
 	private static CoolbarManager coolbarManager;
-	private static IWorkbenchWindowConfigurer windowConfigurer;
-
+		
     public ApplicationWorkbenchWindowAdvisor(IWorkbenchWindowConfigurer configurer) {
-        super(configurer);
-        windowConfigurer = configurer;
-        //TODO for some reason, cant get extension+ini presentationFactory to work
-        configurer.setPresentationFactory(new AccessiblePresentationFactory());
+        super(configurer);        
     }
 
     public ActionBarAdvisor createActionBarAdvisor(IActionBarConfigurer configurer) {
@@ -33,7 +29,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
         configurer.setShowCoolBar(true);
         configurer.setShowStatusLine(false);     
         
-
         //remove unwanted preference pages
 		PreferenceManager preferenceManager = 
 			PlatformUI.getWorkbench().getPreferenceManager();
@@ -45,7 +40,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 				preferenceManager.remove(node);
 			}
 		}
-		
     }
             
     @Override
@@ -59,8 +53,19 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
     	super.postWindowOpen();
     
     	//add coolbar toogle visible support		
-		coolbarManager = new CoolbarManager(windowConfigurer);
-    	
+		coolbarManager = new CoolbarManager(getWindowConfigurer());
+		
+		
+    	//printKeyBindings();
+//		getWindowConfigurer().getWindow()
+//			.getShell().getDisplay().addFilter(SWT.FocusIn, new Listener(){
+//
+//				@Override
+//				public void handleEvent(Event event) {
+//					System.out.println("Display.FocusIn: " + event.widget.getClass().getSimpleName());
+//					
+//				}});
+		
 //    	System.err.println("ApplicationWorkbenchWindowAdvisor#postWindowOpen auto load");  
 //    	
 //		IHandlerService hs = (IHandlerService)PlatformUI.getWorkbench().getService(IHandlerService.class);
@@ -91,4 +96,13 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 //		}
 //		System.clearProperty("emerson.debug.open");
     }    
+    
+//    private void printKeyBindings() {
+//    	IWorkbench workbench = PlatformUI.getWorkbench();
+//    	IBindingService bindingService = (IBindingService)workbench.getAdapter(IBindingService.class);
+//    	System.out.println("Active binding: " + bindingService.getActiveScheme());
+//    	for(Binding binding : bindingService.getBindings()) {
+//    	    System.out.println(binding);
+//    	}
+//    }
 }
