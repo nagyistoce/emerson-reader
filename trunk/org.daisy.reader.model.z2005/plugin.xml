@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-   <extension
-         point="org.eclipse.core.runtime.contentTypes">
+	<extension
+         point="org.eclipse.core.contenttype.contentTypes">
       <content-type
             describer="org.daisy.reader.model.z2005.Z2005ContentDescriber"
             file-extensions="opf"
             id="org.daisy.emerson.z2005.content-type"
             name="%content-type.name.daisy"
             priority="high">
-      </content-type>         
+      </content-type>
    </extension>
 
    <extension
