@@ -11,8 +11,6 @@ import org.eclipse.ui.PlatformUI;
  */
 /*
  *  ** hi prio **
- *  TODO key dialog
- *  TODO navigator view does not position itself at history position at open
  *  TODO when browser focus, sometimes keys stop working
  *  TODO Orca testing
  *  TODO deb for linux installer
@@ -71,4 +69,5 @@ public class Application implements IApplication {
 			}
 		});
 	}
+		
 }
