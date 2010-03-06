@@ -306,7 +306,7 @@
         </property>
         <property
               name="aboutText"
-              value="Emerson: Epub and DAISY Reader&#x0A;Version: 0.6.2&#x0A;http://code.google.com/p/emerson-reader&#x0A;&#x0A;Read more at&#x0A;http://www.idpf.org&#x0A;http://www.daisy.org">
+              value="Emerson: Epub and DAISY Reader&#x0A;Version: 0.6.3&#x0A;http://code.google.com/p/emerson-reader&#x0A;&#x0A;Read more at&#x0A;http://www.idpf.org&#x0A;http://www.daisy.org">
         </property>
         <property
               name="startupProgressRect"
@@ -332,7 +332,7 @@
       <page
             class="org.eclipse.ui.ExtensionFactory:appearancePreferencePage"
             id="org.daisy.emerson.preferences.appearance"
-            name="Appearance"/>
+            name="Appearance"/>             
       <page
             class="org.eclipse.ui.ExtensionFactory:newKeysPreferencePage"
             id="org.daisy.emerson.preferences.keys"
