@@ -3,15 +3,13 @@
 = Developer setup =
 Install Java 5 JDK or later. OpenJDK should work, but has not been extensively tested.
 
-Install Eclipse 3.4.1 or later.
+Install Eclipse 3.5.2 or later.
 
-Download the target platform zip provided in the downloads section, alternatively create a target platform using vanilla 3.5 Mn downloads from eclipse.org, and extract to a different location than Eclipse's default plugin folder.
+Create a target platform using [http://download.eclipse.org/eclipse/downloads/drops/R-3.5.2-201002111343/index.php vanilla 3.5.2], extract to a different location than Eclipse's default plugin folder. Include com.ibm.icu.base and the delta pack, also from the 3.5.2 download link above.
 
-In "Preferences/Plug-in Development/Target platform", set the Location path to the root directory created in the step above. Reload.
+In "Preferences/Plug-in Development/Target platform", activate the target platform created above. Reload.
 
 Get the code from the trunk. (All packages in the trunk root are OSGi bundles, except org.daisy.emerson.install.)
-
-If you get execution environment errors, you need to change each plugins execution environment JRE. (To do this, select properties of The JRE System Library entry within each plugin.)
 
 Create a new Run Configuration. In the Run Configurations main tab, select "Run a Product" and choose org.daisy.emerson.ui.product.
 
