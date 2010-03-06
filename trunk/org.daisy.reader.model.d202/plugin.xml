@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
-<plugin>
+<plugin>   
    <extension
-         point="org.eclipse.core.runtime.contentTypes">
+         point="org.eclipse.core.contenttype.contentTypes">
       <content-type
+      		base-type="org.eclipse.core.runtime.xml"
             describer="org.daisy.reader.model.d202.D202ContentDescriber"
             file-names="ncc.html"
+            file-extensions="html"            
             id="org.daisy.emerson.d202.content-type"
             name="%content-type.name.daisy"
             priority="high">
-      </content-type>         
+      </content-type>
    </extension>
 
    <extension
