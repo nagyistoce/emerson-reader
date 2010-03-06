@@ -34,10 +34,10 @@ public class PositionTransformer {
 			if(phrase!=null) {
 				return phrase;
 			}else{
-				System.err.println("PositionTransformer toSmilAudioMediaObject clause not implemented"); //$NON-NLS-1$
+				Activator.getDefault().logError("PositionTransformer toSmilAudioMediaObject clause not implemented", new IllegalStateException()); //$NON-NLS-1$				
 			}
 		}else{
-			System.err.println("PositionTransformer toSmilAudioMediaObject outer clause not implemented"); //$NON-NLS-1$
+			Activator.getDefault().logError("PositionTransformer toSmilAudioMediaObject outer clause not implemented", new IllegalStateException()); //$NON-NLS-1$
 		}
 				
 		return null; 

@@ -87,10 +87,11 @@ public class SmilAudioPosition implements IPosition {
 			sb.append(" smilfile: " + phrase.getParentContainer().getParentFile().getLocalName()); //$NON-NLS-1$
 		}
 		if(this.timeOffset!=null) {
-			sb.append("Offset: ").append(timeOffset.toString()); //$NON-NLS-1$
+			sb.append(" Offset: ").append(timeOffset.toString()); //$NON-NLS-1$
+		}else{
+			sb.append(" Offset: null"); //$NON-NLS-1$
 		}
-		
-		
+				
 		return sb.toString();
 	}
 }
