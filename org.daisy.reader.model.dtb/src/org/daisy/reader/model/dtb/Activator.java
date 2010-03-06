@@ -32,4 +32,8 @@ public class Activator extends AbstractUIPlugin {
 		getLog().log(new Status(Status.ERROR,PLUGIN_ID,message,exception));
 	}
 
+	public void log(String message) {	
+		getLog().log(new Status(Status.INFO,PLUGIN_ID,message));
+	}
+	
 }

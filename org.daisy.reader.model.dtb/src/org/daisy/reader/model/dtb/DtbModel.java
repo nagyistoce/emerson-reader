@@ -48,9 +48,19 @@ public abstract class DtbModel extends Model {
 
 	@Override
 	public SmilAudioPosition getPosition() {
-		if(getCurrentState()== ModelState.STOPPED) {
-			//added this so that we increase chances of getting a millis comparator
-			//note that the stop impl stores a history mark
+				
+		ModelState state = getCurrentState();
+		
+		//Activator.getDefault().log("DtbModel#getPosition, state is " + state.toString());
+		
+		/*
+		 * If we arent in a live state (so that we can query the player),
+		 * get the last recorded position from the positionHistory.
+		 * Note that the stop impl stores a history mark.
+		 */
+		if(state== ModelState.STOPPED || state == ModelState.STOPPING ||
+				state== ModelState.DISPOSING || state == ModelState.DISPOSED) {	
+			//mg20100223: added disposing and disposed as well
 			SmilAudioPosition peek = positionHistory.peek();
 			if(peek==null) throw new IllegalStateException();
 			return peek;
@@ -60,18 +70,19 @@ public abstract class DtbModel extends Model {
 		SmilAudioPosition position = PositionTransformer.toSmilPosition( 
 			spine.getAudioClipCursor().current());
 		
-		//if, playing add the offset within the audio file
+		//if playing, add the offset within the audio file
 		if(player!=null && !player.isDisposed()) {			
-			position.setTimeOffset(Long.valueOf(player.getCurrentTime()));
+			Long time = player.getCurrentTime();
+			position.setTimeOffset(Long.valueOf(time));
 		}	
-		
+						
 		return position;
 	}
 
 	private boolean firstSetPosCall = true;
 	@Override
 	public boolean setPosition(IPosition position) {
-		//System.err.println("DTBModel#setpostion(IPosition) " +position.toString());
+		//Activator.getDefault().log("DtbModel#setPosition(IPosition), incoming is " + position.toString());		
 		boolean result = false;		
 		//a position can be set as long as we are not disposed
 		if(!this.isDisposed()) {	
@@ -85,8 +96,7 @@ public abstract class DtbModel extends Model {
 			}else{
 				positionHistory.push(getPosition());
 			}
-			
-			
+						
 			//store the Model state previous to relocation
 			ModelState preState = this.getCurrentState();
 			
@@ -218,10 +228,10 @@ public abstract class DtbModel extends Model {
 	 */
 	public boolean stop() {	
 		//System.err.println("DtbModel#stop");
-		if(getCurrentState()!= ModelState.STOPPED) {			
-			fireStateChangeEvent(new ModelStateChangeEvent(this,ModelState.STOPPING));				
+		if(getCurrentState()!= ModelState.STOPPED) {										
 			//record the last position in the history stack
 			positionHistory.push(getPosition());
+			fireStateChangeEvent(new ModelStateChangeEvent(this,ModelState.STOPPING));
 		}	
 		
 		//kill the player and feeder threads		
