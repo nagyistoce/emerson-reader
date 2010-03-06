@@ -25,6 +25,7 @@ public class JLayerAudioKitFactory implements IAudioKitFactory {
 	}
 
 	public boolean supportsContentType(URL audio) {
+		if(audio == null) return false;
 		String filename = URIStringParser.getFileLocalName(audio.getPath());
 		return mp3Pattern.matcher(filename).matches();
 	}
