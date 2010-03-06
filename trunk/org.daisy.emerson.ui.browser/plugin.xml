@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
+   <extension-point 
+   		 id="org.daisy.emerson.ui.browser.behaviorDelegate" 
+   		 name="BrowserBehaviorDelegate" 
+   		 schema="schema/org.daisy.emerson.ui.browser.behaviorDelegate.exsd"/>
+   		 
    <extension
          point="org.eclipse.ui.views">
       <view
@@ -70,7 +75,7 @@
                 
    </extension>
    
-      <extension
+   <extension
          point="org.eclipse.ui.contexts">
       <context
             id="org.daisy.emerson.contexts.views.browser"
@@ -78,13 +83,24 @@
             parentId="org.eclipse.ui.contexts.window">
       </context>
    </extension>
-      <extension
+   
+   <extension
             point="org.eclipse.ui.commands">
 		<command
             defaultHandler="org.daisy.emerson.ui.browser.handlers.TextOnlyPerspectiveHandler"
             id="org.daisy.emerson.commands.textOnlyPerspective"
             name="%command.name.textOnlyPerspective">
       </command>
-      </extension>
+   </extension>
+   
+   <extension
+            point="org.daisy.emerson.ui.browser.behaviorDelegate">                   
+         <provider
+               class="org.daisy.emerson.ui.browser.delegate.BrowserTextHighlightDelegate">
+         </provider>
+         <provider
+               class="org.daisy.emerson.ui.browser.delegate.BrowserLinkActivationDelegate">
+         </provider>
+   </extension>
 
 </plugin>

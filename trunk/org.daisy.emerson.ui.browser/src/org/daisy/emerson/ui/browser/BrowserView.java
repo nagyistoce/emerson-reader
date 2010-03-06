@@ -1,8 +1,11 @@
 package org.daisy.emerson.ui.browser;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.daisy.emerson.ui.Activator;
+import org.daisy.emerson.ui.browser.delegate.IBrowserBehaviorDelegate;
 import org.daisy.emerson.ui.part.EmersonViewPart;
 import org.daisy.emerson.ui.preferences.PreferenceConstants;
 import org.daisy.reader.model.ModelManager;
@@ -13,6 +16,11 @@ import org.daisy.reader.model.state.IModelStateChangeListener;
 import org.daisy.reader.model.state.ModelState;
 import org.daisy.reader.model.state.ModelStateChangeEvent;
 import org.daisy.reader.util.URIStringParser;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -27,33 +35,48 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
+import org.osgi.framework.Bundle;
 
 public class BrowserView extends EmersonViewPart implements IModelStateChangeListener, 
 	IPositionChangeListener, IPropertyChangeListener {
 
 	public static final String VIEW_ID = "org.daisy.emerson.ui.views.browser";	 //$NON-NLS-1$
 	public static final String CONTEXT_ID = "org.daisy.emerson.contexts.views.browser"; //$NON-NLS-1$
-	private String lastSetURL;	
-	private Browser browser;	
+	public static final String BROWSER_BHV_DELEGATE_EP_ID = "org.daisy.emerson.ui.browser.behaviorDelegate"; //$NON-NLS-1$														
+	public Browser browser;	
 	private final IPreferenceStore preferenceStore;
+	private final ListenerList targetChangeListeners;
+	private final List<IBrowserBehaviorDelegate> behaviorDelegates;
+	
+	/**
+	 * The currently loaded URL -- the last URL that was successfully loaded in the browser, including fragment
+	 */
+	private String currentURL;
+	
+	/**
+	 * The currently active fragment in the currently loaded document
+	 */
+	String currentFragment = null;
+	
+	/**
+	 * The currently loaded document, -- currentURL minus the fragment
+	 */
+	String currentDocument = null;
+		
+	/**
+	 * Whether the browser control should recieve keyboard focus each time the
+	 * currently active URL changes 
+	 */
 	private boolean shouldForceFocus = true;
-	//private nsIWebBrowser mozilla = null;
+	
 
 	public BrowserView() {
 		super(VIEW_ID,CONTEXT_ID);
 		preferenceStore = Activator.getDefault().getPreferenceStore();		
 		preferenceStore.addPropertyChangeListener(this);
 		shouldForceFocus = preferenceStore.getBoolean(PreferenceConstants.P_FORCE_FOCUS_CHANGE);
-	}
-	
-	@Override
-	public void setFocus() {				
-		if (browser.forceFocus()) {
-			// an additional TAB is required to focus the browser content:
-			browser.traverse(SWT.TRAVERSE_TAB_NEXT);
-		}else{
-			super.setFocus();	
-		}					
+		targetChangeListeners = new ListenerList(ListenerList.IDENTITY);
+		behaviorDelegates = new ArrayList<IBrowserBehaviorDelegate>(5);
 	}
 	
 	/*
@@ -63,12 +86,75 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 	public void createPartControl(Composite parent) {		
 		browser = createBrowser(parent);
 		init(browser);
-		reset();		
+		reset();								
 	}
-			
+	
 	private void reset() {
-		if(!browser.isDisposed())
-			browser.setText(getBackgroundDocument());		
+		disposeBehaviorDelegates();
+		if(!browser.isDisposed()) {
+			browser.setJavascriptEnabled(true);
+			browser.setText(getBackgroundDocument());				
+		}			
+		currentURL = null;		
+		currentDocument = null;
+		currentFragment = null;
+	}
+
+	/**
+	 * Dispose any IBrowserBehaviorDelegate providers and clear the services list. 
+	 * <p>This method is invoked every time a ModelState change event DISPOSING occurs, 
+	 * and when this View itself is disposed.</p>
+	 */
+	private void disposeBehaviorDelegates() {
+		for(IBrowserBehaviorDelegate service : behaviorDelegates) {
+			if(!service.isDisposed()) service.dispose();
+		}
+		behaviorDelegates.clear();
+	}
+
+	/**
+	 * Load any IBrowserBehaviorDelegate providers. 
+	 * <p>This method is invoked every time a ModelState change event LOADED occurs,
+	 * so that services can be loaded depending on the model type.</p>
+	 */
+	private void loadBehaviorDelegates() {		
+				
+		IExtensionRegistry registry = Platform.getExtensionRegistry();						
+		IExtensionPoint ep = registry.getExtensionPoint(BROWSER_BHV_DELEGATE_EP_ID);    		    				
+		if (ep!=null) {
+			IExtension[] exts = ep.getExtensions();				
+			for (int i = 0; i < exts.length; i++) {
+				IExtension ext = exts[i];
+				Bundle bundle = Platform.getBundle(ext.getContributor().getName());
+				IConfigurationElement[] elems = ext.getConfigurationElements();
+				for (int j = 0; j < elems.length; j++) {
+					IConfigurationElement elem = elems[j];
+					if(elem.getName().equals("provider")) { //$NON-NLS-1$
+						String clazz = elem.getAttribute("class");
+						try {							
+							IBrowserBehaviorDelegate ibs = (IBrowserBehaviorDelegate) 
+								bundle.loadClass(clazz).newInstance();
+							ibs.initialize(this);
+							if(ibs!=null) {								
+								behaviorDelegates.add(ibs);
+							}
+						} catch (Exception e) {
+							Activator.getDefault().logError(e.getMessage(), e);
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	
+	@Override
+	public void dispose() {    	
+	    ModelManager.removeStateChangeListener(this);
+	    ModelManager.removePositionChangeListener(this);
+	    disposeBehaviorDelegates();
+	    browser.dispose();
+		super.dispose();
 	}
 
 	/*
@@ -90,9 +176,10 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 		if(event.getNewState()==ModelState.DISPOSING) {
 			reset();
 		}else if(event.getNewState()==ModelState.LOADED) {
-			//TODO dont do anything, wait for positionchangeevent
+			loadBehaviorDelegates();
 			try{
 				//load the first doc in the spine
+				//TODO dont do this, wait for positionchange
 				Object first = ModelManager.getModel().getSpine().get(0);	
 				if(first!=null) {
 					ITextURLAdapter adapter = (ITextURLAdapter)
@@ -104,47 +191,10 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 				}
 			}catch (Exception e) {
 				Activator.getDefault().logError(e.getLocalizedMessage(), e);
-			}
+			}			
 		}
 	}
 		
-	String previousFragment = null;
-	
-	public boolean setURL(URL url) {
-		if(url!=null && !browser.isDisposed()) {
-
-			String target = url.toExternalForm();
-			if(!target.equals(lastSetURL)) {
-				if(browser.setUrl(target)) {
-					
-					String fragment = URIStringParser.getFragment(target);
-					
-					if(previousFragment!=null) {
-						//TODO store original bgcolor
-						browser.execute("document.getElementById('"  //$NON-NLS-1$
-								+ previousFragment + "').style.backgroundColor='rgb(255,255,255)';"); //$NON-NLS-1$
-					}
-					
-					browser.execute("document.getElementById('"  //$NON-NLS-1$
-							+ fragment + "').style.backgroundColor='rgb(230,230,230)';"); //$NON-NLS-1$
-					
-					previousFragment = fragment;
-
-					//use scrollablecomposite if shaky	
-					//browser.execute("window.scrollBy(0,-20)");	//$NON-NLS-1$
-					
-					if(shouldForceFocus) setFocus(); 
-					
-					lastSetURL = target;
-					
-					return true;
-				}	
-			}
-		}	
-		return false;
-	}
-	
-	
 	/*
 	 * (non-Javadoc)
 	 * @see org.daisy.reader.model.position.IPositionChangeListener#positionChanged(org.daisy.reader.model.position.ModelPositionChangeEvent)
@@ -160,42 +210,109 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 			setURL(u);	
 		}
 	}
-            
-    @Override
-    public void dispose() {    	
-        ModelManager.removeStateChangeListener(this);
-        ModelManager.removePositionChangeListener(this);
-    	super.dispose();
-    }
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
+	 */
+	public void propertyChange(PropertyChangeEvent event) {
+		if(event.getProperty().equals(PreferenceConstants.P_FORCE_FOCUS_CHANGE)) {
+			shouldForceFocus = (Boolean)event.getNewValue();
+		}
+	}
+
+	public boolean setURL(URL url) {
+		if(url==null || browser.isDisposed()) return false;
+		
+		//parse out info on the incoming target
+		String target = url.toExternalForm();		
+		String document = URIStringParser.stripFragment(target);
+		String fragment = URIStringParser.getFragment(target);			
+		boolean newDocument = !document.equals(currentDocument);
+		boolean newFragment = !fragment.equals(currentFragment);
+		
+		//if the incoming target is the same as previous, do nothing
+		if(!newDocument && !newFragment) return true;
+		
+		//notify listeners of pending target change
+		firePreTargetURLChangedEvent(document, currentDocument, fragment, currentFragment);		
+		
+		//set the browser to load new target
+		if(browser.setUrl(target)) {
+
+			//notify listeners that target changed
+			firePostTargetURLChangedEvent(document, currentDocument, fragment, currentFragment);
+			
+			//update our local target state information
+			currentFragment = fragment;
+			currentDocument = document;
+			currentURL = target;
+			
+			//set focus to browser view
+			if(shouldForceFocus) setFocus();
+			
+			return true;
+		}else{ //if(browser.setUrl(target))
+			//handle an erronous URL:
+			//check if we have left the previously successfully loaded URL
+			if(!browser.getUrl().equals(currentURL)) {
+				//try to reload previous
+				if(!browser.setUrl(currentURL)) {
+					//load the fallback
+					browser.setText(getErrorDocument());
+				}	
+			}
+			return false;
+		} //if(browser.setUrl(target))
+		
+	}
 	
+	private void firePreTargetURLChangedEvent(String newDoc, String prevDoc, String newFragment, String prevFragment) {
+		Object[] listening = targetChangeListeners.getListeners();
+		for (int i = 0; i < listening.length; ++i) {
+			((IBrowserTargetChangeListener) 
+					listening[i]).preTargetChange(newDoc, prevDoc, newFragment, prevFragment);
+		}		
+	}
+	
+	private void firePostTargetURLChangedEvent(String newDoc, String prevDoc, String newFragment, String prevFragment) {
+		Object[] listening = targetChangeListeners.getListeners();
+		for (int i = 0; i < listening.length; ++i) {
+			((IBrowserTargetChangeListener) 
+					listening[i]).postTargetChange(newDoc, prevDoc, newFragment, prevFragment);
+		}		
+	}
+
+//	private void handleScroll(String fragment) {
+//		//use scrollablecomposite if shaky	
+//		execute("window.scrollBy(0,-20)");	//$NON-NLS-1$		
+//	}
+
+	@Override
+	public void setFocus() {				
+		if (browser.forceFocus()) {
+			// an additional TAB is required to focus the browser content:
+			browser.traverse(SWT.TRAVERSE_TAB_NEXT);
+		}else{
+			super.setFocus();	
+		}					
+	}
+
 	private Browser createBrowser(Composite parent) {		
-//		GridLayout gridLayout = new GridLayout();		
-//		parent.setLayout(gridLayout);	
 		
 		GridData data = new GridData();
 		data.horizontalAlignment = GridData.FILL;
 		data.verticalAlignment = GridData.FILL;
 		data.grabExcessHorizontalSpace = true;
 		data.grabExcessVerticalSpace = true;
-		//Device.DEBUG = true;
-		//nsIWebBrowser mozilla;
 		try{
 			browser = new Browser(parent, SWT.NONE);
-			//browser = new Browser(parent, SWT.NONE);
-			//Mozilla.getInstance().initialize(new File("/usr/lib/xulrunner-1.9.0.5/"));
-			//mozilla = (nsIWebBrowser)browser.getWebBrowser();
 		}catch (Exception e) {
 			Activator.getDefault().logError(e.getLocalizedMessage(), e);
 			browser = null;
-		}	
-		
-		if(browser==null) {
-			browser = new Browser(parent, SWT.NONE);
-		}	
-
-								
+		}
 		browser.setLayoutData(data);
-										
+			
 		browser.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -209,148 +326,79 @@ public class BrowserView extends EmersonViewPart implements IModelStateChangeLis
 					/*
 					 * Browser hidden menu seems to catch this, 
 					 * need to pass alt to main menu, for Win
-					 * TODO equivalent on other OS's?
+					 * TODO equivalent on other OS's
 					 */
 					browser.getParent().forceFocus();				
 				}
 			}	
 		});
 		
-//		browser.addMouseListener(new MouseAdapter() {
-//			public void mouseDown(MouseEvent e) {
-//				//System.err.println("mousedown");				
-//			}
-//
-//			public void mouseUp(MouseEvent e) {
-//				//System.err.println("mouseup");
-//				//getFocusNS();									
-//			}
-//		});
-		
-//		browser.getAccessible().addAccessibleControlListener(new AccessibleControlListener(){
-//
-//			public void getChild(AccessibleControlEvent arg0) {
-//				System.err.println("AccessibleControlListener#getChild");
-//				
-//			}
-//
-//			public void getChildAtPoint(AccessibleControlEvent arg0) {
-//				System.err.println("AccessibleControlListener#getChildAtPoint");
-//				
-//			}
-//
-//			public void getChildCount(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getChildCount");
-//				
-//			}
-//
-//			public void getChildren(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getChildren");
-//			}
-//
-//			public void getDefaultAction(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getDefaultAction");	
-//			}
-//
-//			public void getFocus(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getFocus");				
-//			}
-//
-//			public void getLocation(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getLocation");
-//			}
-//
-//			public void getRole(AccessibleControlEvent e) {
-//				
-//				System.err.println("AccessibleControlListener#getRole");	
-//				//e.detail = ACC.ROLE_WINDOW;
-//			}
-//
-//			public void getSelection(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getSelection");	
-//			}
-//
-//			public void getState(AccessibleControlEvent e) {
-//				
-//				System.err.println("AccessibleControlListener#getState");			
-//				e.detail = ACC.STATE_FOCUSABLE | ACC.STATE_NORMAL;
-//			}
-//
-//			public void getValue(AccessibleControlEvent arg0) {
-//				
-//				System.err.println("AccessibleControlListener#getValue");
-//			}});
-		
-//		browser.getAccessible().addAccessibleListener(new AccessibleListener(){
-//
-//			public void getDescription(AccessibleEvent arg0) {
-//				
-//				System.err.println("AccessibleListener#getDescription");				
-//			}
-//
-//			public void getHelp(AccessibleEvent arg0) {
-//				
-//				System.err.println("AccessibleListener#getHelp");
-//			}
-//
-//			public void getKeyboardShortcut(AccessibleEvent arg0) {
-//				
-//				System.err.println("AccessibleListener#getKeyboardShortcut");
-//			}
-//
-//			public void getName(AccessibleEvent arg0) {
-//				
-//				System.err.println("AccessibleListener#getName");
-//			}});
-		
-//			browser.getAccessible().addAccessibleTextListener(new AccessibleTextListener(){
-//
-//				public void getCaretOffset(AccessibleTextEvent arg0) {
-//					
-//					System.err.println("T");
-//				}
-//
-//				public void getSelectionRange(AccessibleTextEvent arg0) {
-//					
-//					System.err.println("T");
-//				}});
-		
 		return browser;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.jface.util.IPropertyChangeListener#propertyChange(org.eclipse.jface.util.PropertyChangeEvent)
+	/**
+	 * Execute javascript on the browser. This method only executes
+	 * if the load progress is reported as complete.
 	 */
-	public void propertyChange(PropertyChangeEvent event) {
-		if(event.getProperty().equals(PreferenceConstants.P_FORCE_FOCUS_CHANGE)) {
-			shouldForceFocus = (Boolean)event.getNewValue();
-		}
+	public boolean execute(String script) {
+		//if(loadComplete) {
+			try{
+				return browser.execute(script);
+			}catch (Exception e) {
+				Activator.getDefault().logError(e.getLocalizedMessage(), e);
+			}	
+		//}
+		return false;
 	}
-	
-//	private void getFocusNS() {
-//		try{
-//			System.err.println(mozilla.getContentDOMWindow().getSelection().getFocusNode().getParentNode().getLocalName());
-//		}catch (Throwable t) {
-//			t.printStackTrace();
-//		}
-//		browser.execute("var targ;if (!e){var e=window.event;}if(e.target){targ=e.target;}else if (e.srcElement){targ=e.srcElement;}if (targ.nodeType==3){targ = targ.parentNode;}var tname;tname=targ.tagName;alert('You clicked on a ' + tname + ' element. ID=' + targ.getAttribute('id'));");
-//
-//	}
-		
+
+	/**
+	 * Evaluate javascript on the browser. This method only executes
+	 * if the load progress is reported as complete.
+	 */
+	public Object evaluate(String script) {
+		//if(loadComplete) {
+			try{
+				return browser.evaluate(script);
+			}catch (Exception e) {
+				Activator.getDefault().logError(e.getLocalizedMessage(), e);
+			}	
+		//}
+		return null;
+	}
+
+	/**
+	 * Add the given listener to the list of objects that will be notified each
+	 * time the browser in this BrowserView changes its current target URL.
+	 */
+	public void addTargetChangeListener(IBrowserTargetChangeListener listener){
+		targetChangeListeners.add(listener);
+	}
+
+	/**
+	 * Remove the given listener to the list of objects that will be notified each
+	 * time the browser in this BrowserView changes its current target URL.
+	 */
+	public void removeTargetChangeListener(IBrowserTargetChangeListener listener){
+		targetChangeListeners.remove(listener);
+	}
+
 	private String getBackgroundDocument(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("<html><head><title>Emerson</title><style type='text/css'>body{background-color:"); //$NON-NLS-1$
 		sb.append(getBackgroundColor());
 		sb.append("; font-size:100.01%;}p.a{color:"); //$NON-NLS-1$
 		sb.append(getForegroundColor());
-		sb.append("; font-size:10em; align:center;}</style></head><body><p class='a' align='center'>emerson</p></body><html>"); //$NON-NLS-1$
+		sb.append("; font-size:10em; align:center; text-shadow: 0 2px 4px gray;}</style></head><body><p class='a' align='center'>emerson</p></body><html>"); //$NON-NLS-1$
+		return sb.toString();
+	}
+	
+	private String getErrorDocument(){
+		StringBuilder sb = new StringBuilder();
+		sb.append("<html><head><title>Emerson</title><style type='text/css'>body{background-color:"); //$NON-NLS-1$
+		sb.append(getBackgroundColor());
+		sb.append("; font-size:100.01%;}p.a{color:"); //$NON-NLS-1$
+		sb.append(getForegroundColor());
+		sb.append("; font-size:10em; align:center; text-shadow: 0 2px 4px black;}</style></head><body><p class='a' align='center'>404</p></body><html>"); //$NON-NLS-1$
 		return sb.toString();
 	}
 	
