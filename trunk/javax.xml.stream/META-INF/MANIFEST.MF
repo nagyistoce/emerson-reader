@@ -9,5 +9,5 @@ Export-Package: javax.xml,
  javax.xml.stream; version="1.0.1",
  javax.xml.stream.events; version="1.0.1",
  javax.xml.stream.util; version="1.0.1"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5,JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: Sun.com
