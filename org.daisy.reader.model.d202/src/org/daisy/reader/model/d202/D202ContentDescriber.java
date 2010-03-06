@@ -9,13 +9,8 @@ import org.eclipse.core.runtime.content.IContentDescription;
 
 public class D202ContentDescriber implements IContentDescriber {
 
-	public D202ContentDescriber() {
-		
-	}
-
 	public int describe(InputStream contents, IContentDescription description)
 			throws IOException {
-		//TODO ContentDescriber, changed extension point in 3.5
 		return IContentDescriber.VALID;
 	}
 
