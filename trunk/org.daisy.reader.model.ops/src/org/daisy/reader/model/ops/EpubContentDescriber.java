@@ -7,15 +7,10 @@ import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.content.IContentDescriber;
 import org.eclipse.core.runtime.content.IContentDescription;
 
-public class EpubContentDescriber implements IContentDescriber {
-
-	public EpubContentDescriber() {
-		
-	}
+public class EpubContentDescriber implements IContentDescriber{
 
 	public int describe(InputStream contents, IContentDescription description)
-			throws IOException {	
-		//TODO ContentDescriber, changed extension point in 3.5
+			throws IOException {
 		return IContentDescriber.VALID;
 	}
 
