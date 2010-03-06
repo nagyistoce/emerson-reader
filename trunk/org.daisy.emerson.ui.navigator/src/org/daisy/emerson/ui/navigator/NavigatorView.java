@@ -41,6 +41,7 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 	public static final String VIEW_ID = "org.daisy.emerson.ui.views.navigator"; //$NON-NLS-1$
 	private static TreeViewer treeViewer;
 	private NavigatorContentProvider contentProvider = null;
+	private INavigationItem lastSelected = null;
 	 
 	public NavigatorView() {
 		super(VIEW_ID,CONTEXT_ID);
@@ -77,13 +78,14 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 		}
 		
 		init(treeViewer.getControl()); 				
-						
+		
 	}
 	
 	@Override
 	public void dispose() {	
 		ModelManager.removeStateChangeListener(this);    	
 		ModelManager.removePositionChangeListener(this);
+		lastSelected = null;
 		treeViewer.getControl().dispose();
 		super.dispose();
 	}
@@ -92,8 +94,7 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 	 * (non-Javadoc)
 	 * @see org.daisy.reader.model.state.IModelStateChangeListener#modelStateChanged(org.daisy.reader.model.state.ModelStateChangeEvent)
 	 */
-	public void modelStateChanged(final ModelStateChangeEvent event) {
-		//System.err.println("NavigatorView#modelStateChanged");
+	public void modelStateChanged(final ModelStateChangeEvent event) {		
 		ModelState newState = event.getNewState();
 		if(newState == ModelState.LOADED) {
 			if(!treeViewer.getControl().isDisposed()) {
@@ -102,7 +103,8 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 				selectCurrent(ModelManager.getModel());
 			}				
 		}else if(newState == ModelState.DISPOSING) {
-			treeViewer.setInput(new Object());			
+			treeViewer.setInput(new Object());	
+			lastSelected = null;
 		}		
 	}
 	
@@ -119,17 +121,13 @@ public class NavigatorView extends EmersonViewPart implements IDoubleClickListen
 	/**
 	 * Select the current model heading in the tree viewer.
 	 * @param model
-	 */
-	private INavigationItem lastSelected = null;
-	private void selectCurrent(Model model) {
-		INavigationItem item = model.getNavigation().getCurrent(Semantic.HEADING);
-		
+	 */	
+	private void selectCurrent(Model model) {		
+		INavigationItem item = model.getNavigation().getCurrent(Semantic.HEADING);		
 		if(item!=null && item!=lastSelected) {
 			treeViewer.setSelection(new StructuredSelection(item), true);
 			treeViewer.setExpandedState(item, true);
-			lastSelected = item;
-			//TODO if the viewer is closed and reopened, the current item is not selected
-			//although we do pass through this method. The same is true at initial load.
+			lastSelected = item;						
 		}
 	}
 

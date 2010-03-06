@@ -464,7 +464,7 @@
             sequence="PAGE_UP">            
       </key>
 
-      <key
+      <key            
             commandId="org.daisy.emerson.commands.navigator.navigate.page.next"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.daisy.emerson.defaultAcceleratorConfiguration"

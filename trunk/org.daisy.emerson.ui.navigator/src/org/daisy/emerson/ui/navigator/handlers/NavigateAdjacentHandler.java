@@ -12,9 +12,9 @@ import org.eclipse.core.commands.ExecutionException;
 
 /**
  * Navigate to adjacent position of a given semantic.
- * <p>Why use masses of subclasses of this class instead of commandparameters?</p>
- * <p>Because we need separate handler activation depending on whether
- * a specific semantic has a prev or next entry.</p>
+ * <p>We use this abstract class instead of commandparameters because we need 
+ * separate handler activation depending on whether a specific semantic has a 
+ * prev or next entry.</p>
  * @author Markus Gylling
  */
 public abstract class NavigateAdjacentHandler extends AbstractHandler {
