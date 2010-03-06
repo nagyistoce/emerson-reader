@@ -31,13 +31,20 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	}
 	@Override
 	public IStatus restoreState(IMemento memento) {
-		try{
-			//TODO use platform autostart extension for historylist and notes
+		//TODO use platform autostart extension for historylist and notes
+		try{			
 			HistoryList.create(memento);
-			Notes.create(memento);
 		}catch (Throwable t) {
 			Activator.getDefault().logError(t.getLocalizedMessage(), t);
 		}	
+		
+		//TODO use platform autostart extension for historylist and notes		
+		try{			
+			Notes.create(memento);
+		}catch (Throwable t) {
+			Activator.getDefault().logError(t.getLocalizedMessage(), t);
+		}
+		
 		return super.restoreState(memento);
 	}
 	
@@ -50,7 +57,7 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 		}catch (Throwable t) {
 			Activator.getDefault().logError(t.getLocalizedMessage(), t);
 		}
-		return super.saveState(memento);
+		return super.saveState(memento);				
 	}
-
+		
 }
