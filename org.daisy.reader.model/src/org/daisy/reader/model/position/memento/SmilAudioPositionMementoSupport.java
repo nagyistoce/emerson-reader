@@ -48,8 +48,9 @@ public class SmilAudioPositionMementoSupport implements IPositionMementoSupport 
 		IMemento sub = destination.createChild(SMIL_AUDIO_POSITION);
 		sub.putString(SMIL_FILE_NAME, sap.getSmilFileName());
 		sub.putInteger(PHRASE_INDEX, sap.getPhraseOffset());
-		if(sap.getTimeOffset()!=null)
-			sub.putString(MILLIS_OFFSET, sap.getTimeOffset().toString());			
+		if(sap.getTimeOffset()!=null) {			
+			sub.putString(MILLIS_OFFSET, sap.getTimeOffset().toString());
+		}
 				
 	}
 	
