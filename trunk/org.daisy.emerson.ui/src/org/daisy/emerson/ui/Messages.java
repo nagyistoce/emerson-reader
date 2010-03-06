@@ -9,6 +9,8 @@ public class Messages extends NLS {
 	public static String UIPreferencePage_ShowCoolBar;
 	public static String UIPreferencePage_ForceFocusChange;
 	public static String EmersonPopupTableDialog_EscToClose;
+	public static String OpenPublicationHandler_AllFiles;
+	public static String OpenPublicationHandler_EmersonContent;
 	public static String OpenPublicationHandler_OpenBook;
 	public static String OpenPublicationHandler_OpenFailed1;
 	public static String OpenPublicationHandler_OpenFailed2;
