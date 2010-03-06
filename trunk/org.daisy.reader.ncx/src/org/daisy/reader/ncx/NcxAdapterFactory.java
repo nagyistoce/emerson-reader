@@ -55,7 +55,15 @@ public class NcxAdapterFactory implements IAdapterFactory {
 		}
 
 		public Object getParent(Object element) {
-			return ((NcxNavPoint)element).parent;			
+			//romain 20100223: return the Ncx instead of
+			//the navMap in order to fix the no-highlight
+			//bug in the ncx treeview
+			Object obj = ((NcxNavPoint)element).parent;
+			if(obj instanceof NcxNavMap) {
+				return ((NcxNavMap)obj).getNcx();
+			}else {
+				return obj;
+			}
 		}
 
 	}

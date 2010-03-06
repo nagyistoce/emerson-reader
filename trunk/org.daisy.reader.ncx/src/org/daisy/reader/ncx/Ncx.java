@@ -42,7 +42,7 @@ public class Ncx implements INavigation {
 	public Ncx() {		
 		navLists = new ArrayList<NcxNavList>();
 		ncxCustomTestData = new HashMap<String,NcxCustomTest>();
-		navMap = new NcxNavMap();
+		navMap = new NcxNavMap(this);
 	}
 			
 	public void load(URL ncx) {

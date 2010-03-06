@@ -10,9 +10,11 @@ import org.daisy.reader.model.navigation.INavigationItem;
 
 public class NcxNavMap  {
 	List<NcxNavPoint> children = null;
+	private Ncx ncx;
 	
-	public NcxNavMap() {
+	public NcxNavMap(Ncx ncx) {
 		children = new ArrayList<NcxNavPoint>();
+		this.ncx = ncx;
 	}
 	
 	/**
@@ -22,6 +24,13 @@ public class NcxNavMap  {
 		return children;
 	}
 
+	/**
+	 * Get the Ncx instance that is the parent of this NcxNavMap.
+	 */
+	public Ncx getNcx() {
+		return ncx;
+	}
+	
 	public ListIterator<INavigationItem> listIterator() {		
 		return new NavMapListIterator();
 	}
