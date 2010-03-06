@@ -16,6 +16,7 @@ class CoolbarManager implements IPropertyChangeListener {
 	private static IWorkbenchWindowConfigurer windowConfigurer; 
 	
 	CoolbarManager(IWorkbenchWindowConfigurer configurer) {
+		if(configurer==null) throw new NullPointerException();
 		windowConfigurer = configurer;
 		store = Activator.getDefault().getPreferenceStore();		
 		store.addPropertyChangeListener(this);
