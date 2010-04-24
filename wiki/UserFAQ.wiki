@@ -12,10 +12,10 @@ You also need an operating system to install Java on. Windows, Mac OS X or Linux
 
 Linux users: OpenJDK _should_ work, but has not been extensively tested.
 
-Linux users: there are known issues with Emerson and PulseAudio, use ALSA audio drivers.
+Linux users: there are known issues with Emerson and PulseAudio, use ALSA audio drivers. See also this [http://code.google.com/p/emerson-reader/issues/detail?id=5&q=willem#c8 workaround suggestion].
 
 == What e-text formats does Emerson support? ==
-At the time of writing, Emerson supports the [http://www.idpf.org Epub] format.
+At the time of writing, Emerson supports the [http://www.idpf.org EPUB] format.
 
 == What kinds of DTBs does Emerson support? ==
 First regarding DAISY support: Emerson is an *audio* DTB player. At the time of writing, it does not support text-only DTBs.
