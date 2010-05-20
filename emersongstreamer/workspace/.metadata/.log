@@ -1,0 +1,792 @@
+!SESSION 2009-10-08 15:48:18.615 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.osgi 4 0 2009-10-08 15:48:19.175
+!MESSAGE Bundle com.javazoom.javalayer not found.
+
+!ENTRY org.eclipse.osgi 4 0 2009-10-08 15:48:19.175
+!MESSAGE Bundle com.javazoom.javalayer.kit not found.
+
+!ENTRY org.daisy.reader.model.dtb 4 0 2009-10-08 15:48:36.143
+!MESSAGE Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+!STACK 0
+org.daisy.reader.model.exception.UnsupportedContentTypeException: Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+	at org.daisy.reader.model.audio.AudioKitFactoryFactory.newAudioKitFactory(AudioKitFactoryFactory.java:69)
+	at org.daisy.reader.model.dtb.DtbModel.getAudioKitFactory(DtbModel.java:302)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:197)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:120)
+	at org.daisy.emerson.ui.handlers.OpenPublicationHandler$1.run(OpenPublicationHandler.java:56)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.daisy.emerson.ui.handlers.OpenPublicationHandler.execute(OpenPublicationHandler.java:49)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+	at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+	at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.daisy.reader.model.dtb 4 0 2009-10-08 15:48:51.874
+!MESSAGE Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+!STACK 0
+org.daisy.reader.model.exception.UnsupportedContentTypeException: Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+	at org.daisy.reader.model.audio.AudioKitFactoryFactory.newAudioKitFactory(AudioKitFactoryFactory.java:69)
+	at org.daisy.reader.model.dtb.DtbModel.getAudioKitFactory(DtbModel.java:302)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:197)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:120)
+	at org.daisy.emerson.ui.navigator.handlers.NavigateAdjacentHandler.execute(NavigateAdjacentHandler.java:30)
+	at org.daisy.emerson.ui.navigator.handlers.NavigateNextHeadingHandler.execute(NavigateNextHeadingHandler.java:17)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+	at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+	at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.daisy.reader.model.dtb 4 0 2009-10-08 15:48:53.203
+!MESSAGE Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+!STACK 0
+org.daisy.reader.model.exception.UnsupportedContentTypeException: Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+	at org.daisy.reader.model.audio.AudioKitFactoryFactory.newAudioKitFactory(AudioKitFactoryFactory.java:69)
+	at org.daisy.reader.model.dtb.DtbModel.getAudioKitFactory(DtbModel.java:302)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:197)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:165)
+	at org.daisy.emerson.ui.dtb.handlers.TogglePlayStopHandler.execute(TogglePlayStopHandler.java:16)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+	at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+	at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-10-08 15:50:35.980 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.daisy.reader.model.dtb 4 0 2009-10-08 15:50:40.269
+!MESSAGE Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+!STACK 0
+org.daisy.reader.model.exception.UnsupportedContentTypeException: Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+	at org.daisy.reader.model.audio.AudioKitFactoryFactory.newAudioKitFactory(AudioKitFactoryFactory.java:69)
+	at org.daisy.reader.model.dtb.DtbModel.getAudioKitFactory(DtbModel.java:302)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:197)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:120)
+	at org.daisy.emerson.ui.handlers.OpenPublicationHandler$1.run(OpenPublicationHandler.java:56)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.daisy.emerson.ui.handlers.OpenPublicationHandler.execute(OpenPublicationHandler.java:49)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:178)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:253)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:253)
+	at org.daisy.emerson.ui.library.LibraryView.doubleClick(LibraryView.java:143)
+	at org.eclipse.jface.viewers.StructuredViewer$1.run(StructuredViewer.java:799)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:48)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.viewers.StructuredViewer.fireDoubleClick(StructuredViewer.java:797)
+	at org.eclipse.jface.viewers.StructuredViewer.handleDoubleSelect(StructuredViewer.java:1061)
+	at org.eclipse.jface.viewers.StructuredViewer$4.widgetDefaultSelected(StructuredViewer.java:1173)
+	at org.eclipse.jface.util.OpenStrategy.fireDefaultSelectionEvent(OpenStrategy.java:237)
+	at org.eclipse.jface.util.OpenStrategy.access$0(OpenStrategy.java:234)
+	at org.eclipse.jface.util.OpenStrategy$1.handleEvent(OpenStrategy.java:295)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-10-08 15:52:18.337 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.daisy.reader.model.dtb 4 0 2009-10-08 15:52:25.164
+!MESSAGE Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+!STACK 0
+org.daisy.reader.model.exception.UnsupportedContentTypeException: Unsupported content type: /root/EMERSON/daisy/Chimpanzees_DAISY_3.0/audio/Page01.mp3
+	at org.daisy.reader.model.audio.AudioKitFactoryFactory.newAudioKitFactory(AudioKitFactoryFactory.java:69)
+	at org.daisy.reader.model.dtb.DtbModel.getAudioKitFactory(DtbModel.java:302)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:197)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:120)
+	at org.daisy.emerson.ui.handlers.OpenPublicationHandler$1.run(OpenPublicationHandler.java:56)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.daisy.emerson.ui.handlers.OpenPublicationHandler.execute(OpenPublicationHandler.java:49)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:178)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:253)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:253)
+	at org.daisy.emerson.ui.library.LibraryView.doubleClick(LibraryView.java:143)
+	at org.eclipse.jface.viewers.StructuredViewer$1.run(StructuredViewer.java:799)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.runtime.Platform.run(Platform.java:880)
+	at org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:48)
+	at org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:175)
+	at org.eclipse.jface.viewers.StructuredViewer.fireDoubleClick(StructuredViewer.java:797)
+	at org.eclipse.jface.viewers.StructuredViewer.handleDoubleSelect(StructuredViewer.java:1061)
+	at org.eclipse.jface.viewers.StructuredViewer$4.widgetDefaultSelected(StructuredViewer.java:1173)
+	at org.eclipse.jface.util.OpenStrategy.fireDefaultSelectionEvent(OpenStrategy.java:237)
+	at org.eclipse.jface.util.OpenStrategy.access$0(OpenStrategy.java:234)
+	at org.eclipse.jface.util.OpenStrategy$1.handleEvent(OpenStrategy.java:295)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-10-08 15:52:29.800 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.equinox.app 4 2 2009-10-08 15:52:32.838
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.equinox.app".
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:446)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:384)
+	at org.eclipse.swt.widgets.Shell.close(Shell.java:557)
+	at org.eclipse.ui.splash.AbstractSplashHandler.dispose(AbstractSplashHandler.java:63)
+	at org.eclipse.ui.splash.BasicSplashHandler.dispose(BasicSplashHandler.java:189)
+	at org.eclipse.ui.internal.Workbench$7.applicationRunning(Workbench.java:584)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle$1.run(EclipseAppHandle.java:245)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.applicationRunning(EclipseAppHandle.java:235)
+	at org.eclipse.core.internal.runtime.InternalPlatform.endSplash(InternalPlatform.java:151)
+	at org.eclipse.core.runtime.Platform.endSplash(Platform.java:556)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2316)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-10-09 10:24:12.208 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.ui 4 0 2009-10-09 10:24:17.872
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: No such Gstreamer factory: playbin
+	at org.gstreamer.ElementFactory.makeRawElement(ElementFactory.java:172)
+	at org.gstreamer.Element.makeRawElement(Element.java:94)
+	at org.gstreamer.elements.PlayBin.<init>(PlayBin.java:245)
+	at org.daisy.emerson.volume.Volume.<init>(Volume.java:102)
+	at org.daisy.emerson.volume.handlers.SampleHandler.execute(SampleHandler.java:38)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+	at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+	at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-12-21 10:42:55.100 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.5.0_06
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.osgi 4 0 2009-12-21 10:42:55.758
+!MESSAGE Bundle org.daisy.emerson.ui.notes not found.
+
+!ENTRY org.eclipse.ui 4 0 2009-12-21 10:42:58.328
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 org.eclipse.ui 0 0 2009-12-21 10:42:58.328
+!MESSAGE 
+!SUBENTRY 1 org.eclipse.core.runtime 0 0 2009-12-21 10:42:58.328
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.runtime 0 0 2009-12-21 10:42:58.328
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.runtime 0 0 2009-12-21 10:42:58.328
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2009-12-21 10:42:58.328
+!MESSAGE Unable to restore perspective: <Unknown Label> - Emerson Default Perspective.
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.328
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2009-12-21 10:42:58.328
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.329
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.329
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.329
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 4 4 2009-12-21 10:42:58.329
+!MESSAGE Could not create view: org.daisy.emerson.ui.views.notes
+!STACK 1
+org.eclipse.ui.PartInitException: Could not create view: org.daisy.emerson.ui.views.notes
+	at org.eclipse.ui.internal.ViewFactory.createView(ViewFactory.java:157)
+	at org.eclipse.ui.internal.Perspective.createReferences(Perspective.java:1173)
+	at org.eclipse.ui.internal.Perspective.restoreState(Perspective.java:1143)
+	at org.eclipse.ui.internal.WorkbenchPage$16.runWithException(WorkbenchPage.java:3168)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3378)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3036)
+	at org.eclipse.ui.application.WorkbenchAdvisor.openWindows(WorkbenchAdvisor.java:803)
+	at org.eclipse.ui.internal.Workbench$27.runWithException(Workbench.java:1361)
+	at org.eclipse.ui.internal.StartupThreading$StartupRunnable.run(StartupThreading.java:31)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3378)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3036)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2293)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.daisy.emerson.ui.Application.start(Application.java:49)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SUBENTRY 3 org.eclipse.ui 4 0 2009-12-21 10:42:58.330
+!MESSAGE Could not create view: org.daisy.emerson.ui.views.notes
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.330
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.330
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.330
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 0 0 2009-12-21 10:42:58.330
+!MESSAGE 
+!SUBENTRY 2 org.eclipse.ui 4 0 2009-12-21 10:42:58.331
+!MESSAGE Could not find view: org.daisy.emerson.ui.views.notes
+!SUBENTRY 1 org.eclipse.core.runtime 0 0 2009-12-21 10:42:58.331
+!MESSAGE OK
+
+!ENTRY org.eclipse.ui.workbench 4 2 2009-12-21 10:43:15.228
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:446)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:385)
+	at org.eclipse.swt.widgets.Menu.getItems(Menu.java:464)
+	at org.eclipse.jface.action.MenuManager.getMenuItems(MenuManager.java:683)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:772)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:672)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService.updateManagers(WorkbenchMenuService.java:332)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService$4.propertyChange(WorkbenchMenuService.java:318)
+	at org.eclipse.ui.internal.services.EvaluationAuthority$1.run(EvaluationAuthority.java:252)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.fireServiceChange(EvaluationAuthority.java:246)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.endSourceChange(EvaluationAuthority.java:197)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.sourceChanged(EvaluationAuthority.java:135)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:310)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:301)
+	at org.eclipse.ui.AbstractSourceProvider.fireSourceChanged(AbstractSourceProvider.java:80)
+	at org.daisy.reader.model.source.PropertySourceProvider.modelStateChanged(PropertySourceProvider.java:124)
+	at org.daisy.reader.model.Model.fireStateChangeEvent(Model.java:121)
+	at org.daisy.reader.model.dtb.DtbModel.stop(DtbModel.java:268)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:211)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:132)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:138)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.ui.workbench 4 0 2009-12-21 10:43:15.229
+!MESSAGE Invalid thread access
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:446)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:385)
+	at org.eclipse.swt.widgets.Menu.getItems(Menu.java:464)
+	at org.eclipse.jface.action.MenuManager.getMenuItems(MenuManager.java:683)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:772)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:672)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService.updateManagers(WorkbenchMenuService.java:332)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService$4.propertyChange(WorkbenchMenuService.java:318)
+	at org.eclipse.ui.internal.services.EvaluationAuthority$1.run(EvaluationAuthority.java:252)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.fireServiceChange(EvaluationAuthority.java:246)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.endSourceChange(EvaluationAuthority.java:197)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.sourceChanged(EvaluationAuthority.java:135)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:310)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:301)
+	at org.eclipse.ui.AbstractSourceProvider.fireSourceChanged(AbstractSourceProvider.java:80)
+	at org.daisy.reader.model.source.PropertySourceProvider.modelStateChanged(PropertySourceProvider.java:124)
+	at org.daisy.reader.model.Model.fireStateChangeEvent(Model.java:121)
+	at org.daisy.reader.model.dtb.DtbModel.stop(DtbModel.java:268)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:211)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:132)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:138)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.ui.workbench 4 2 2009-12-21 10:43:15.231
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:446)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:385)
+	at org.eclipse.swt.widgets.Menu.getItems(Menu.java:464)
+	at org.eclipse.jface.action.MenuManager.getMenuItems(MenuManager.java:683)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:772)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:672)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService.updateManagers(WorkbenchMenuService.java:332)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService$4.propertyChange(WorkbenchMenuService.java:318)
+	at org.eclipse.ui.internal.services.EvaluationAuthority$1.run(EvaluationAuthority.java:252)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.fireServiceChange(EvaluationAuthority.java:246)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.endSourceChange(EvaluationAuthority.java:197)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.sourceChanged(EvaluationAuthority.java:135)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:310)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:301)
+	at org.eclipse.ui.AbstractSourceProvider.fireSourceChanged(AbstractSourceProvider.java:80)
+	at org.daisy.reader.model.source.PropertySourceProvider.modelStateChanged(PropertySourceProvider.java:121)
+	at org.daisy.reader.model.Model.fireStateChangeEvent(Model.java:121)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:232)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:132)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:138)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.ui.workbench 4 0 2009-12-21 10:43:15.231
+!MESSAGE Invalid thread access
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:446)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:385)
+	at org.eclipse.swt.widgets.Menu.getItems(Menu.java:464)
+	at org.eclipse.jface.action.MenuManager.getMenuItems(MenuManager.java:683)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:772)
+	at org.eclipse.jface.action.MenuManager.update(MenuManager.java:672)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService.updateManagers(WorkbenchMenuService.java:332)
+	at org.eclipse.ui.internal.menus.WorkbenchMenuService$4.propertyChange(WorkbenchMenuService.java:318)
+	at org.eclipse.ui.internal.services.EvaluationAuthority$1.run(EvaluationAuthority.java:252)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.fireServiceChange(EvaluationAuthority.java:246)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.endSourceChange(EvaluationAuthority.java:197)
+	at org.eclipse.ui.internal.services.EvaluationAuthority.sourceChanged(EvaluationAuthority.java:135)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:310)
+	at org.eclipse.ui.internal.services.ExpressionAuthority.sourceChanged(ExpressionAuthority.java:301)
+	at org.eclipse.ui.AbstractSourceProvider.fireSourceChanged(AbstractSourceProvider.java:80)
+	at org.daisy.reader.model.source.PropertySourceProvider.modelStateChanged(PropertySourceProvider.java:121)
+	at org.daisy.reader.model.Model.fireStateChangeEvent(Model.java:121)
+	at org.daisy.reader.model.dtb.DtbModel.render(DtbModel.java:232)
+	at org.daisy.reader.model.dtb.DtbModel.setPosition(DtbModel.java:132)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:138)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.gstreamer.gstreamer-java.kit 4 0 2009-12-21 10:43:15.233
+!MESSAGE 
+!STACK 0
+java.lang.IllegalMonitorStateException
+	at java.lang.Object.notifyAll(Native Method)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:141)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.gstreamer.gstreamer-java.kit 4 0 2009-12-21 10:44:14.851
+!MESSAGE 
+!STACK 0
+java.lang.IllegalMonitorStateException
+	at java.lang.Object.notifyAll(Native Method)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:141)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.gstreamer.gstreamer-java.kit 4 0 2009-12-21 10:44:16.654
+!MESSAGE Invalid thread access
+!STACK 0
+org.eclipse.swt.SWTException: Invalid thread access
+	at org.eclipse.swt.SWT.error(SWT.java:3777)
+	at org.eclipse.swt.SWT.error(SWT.java:3695)
+	at org.eclipse.swt.SWT.error(SWT.java:3666)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:446)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:385)
+	at org.eclipse.swt.widgets.Tree.getSelection(Tree.java:1687)
+	at org.eclipse.jface.viewers.TreeViewer.getSelection(TreeViewer.java:250)
+	at org.eclipse.jface.viewers.TreeViewer.setSelection(TreeViewer.java:338)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setSelectionToWidget(AbstractTreeViewer.java:2470)
+	at org.eclipse.jface.viewers.StructuredViewer.setSelectionToWidget(StructuredViewer.java:1680)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.setSelectionToWidget(AbstractTreeViewer.java:2864)
+	at org.eclipse.jface.viewers.StructuredViewer.setSelection(StructuredViewer.java:1636)
+	at org.eclipse.jface.viewers.TreeViewer.setSelection(TreeViewer.java:1104)
+	at org.daisy.emerson.ui.navigator.NavigatorView.selectCurrent(NavigatorView.java:134)
+	at org.daisy.emerson.ui.navigator.NavigatorView.positionChanged(NavigatorView.java:119)
+	at org.daisy.reader.model.Model.firePositionChangeEvent(Model.java:140)
+	at org.gstreamer.gstreamerjava.kit.GstAudioPlayer$2.endOfStream(GstAudioPlayer.java:140)
+	at org.gstreamer.Bus$3.callback(Bus.java:346)
+	at org.gstreamer.Bus$MessageProxy.busMessage(Bus.java:800)
+	at org.gstreamer.Bus.dispatchMessage(Bus.java:788)
+	at org.gstreamer.Bus.access$1(Bus.java:785)
+	at org.gstreamer.Bus$2$1.run(Bus.java:693)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRun(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+!SESSION 2010-05-07 23:13:42.401 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=GNU libgcj 4.3.0 20080202 (experimental) [trunk revision 132072]
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.osgi 4 0 2010-05-07 23:13:43.528
+!MESSAGE Bundle org.daisy.emerson.ui.notes not found.
+
+!ENTRY org.daisy.reader.history 4 0 2010-05-07 23:15:51.874
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+   at org.daisy.reader.history.HistoryList.get(HistoryList.java:187)
+   at org.daisy.emerson.ui.library.LibraryView$ViewContentProvider.getElements(LibraryView.java:135)
+   at org.eclipse.jface.viewers.StructuredViewer.getRawChildren(StructuredViewer.java:937)
+   at org.eclipse.jface.viewers.ColumnViewer.getRawChildren(ColumnViewer.java:703)
+   at org.eclipse.jface.viewers.AbstractTableViewer.getRawChildren(AbstractTableViewer.java:1071)
+   at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:871)
+   at org.eclipse.jface.viewers.StructuredViewer.getSortedChildren(StructuredViewer.java:994)
+   at org.eclipse.jface.viewers.AbstractTableViewer.internalRefreshAll(AbstractTableViewer.java:685)
+   at org.eclipse.jface.viewers.AbstractTableViewer.internalRefresh(AbstractTableViewer.java:633)
+   at org.eclipse.jface.viewers.AbstractTableViewer.internalRefresh(AbstractTableViewer.java:620)
+   at org.eclipse.jface.viewers.StructuredViewer$7.run(StructuredViewer.java:1430)
+   at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1365)
+   at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1328)
+   at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1428)
+   at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:537)
+   at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1387)
+   at org.daisy.emerson.ui.library.LibraryView.historyEvent(LibraryView.java:52)
+   at org.daisy.reader.history.HistoryList.fireEvent(HistoryList.java:158)
+   at org.daisy.reader.history.HistoryList.add(HistoryList.java:120)
+   at org.daisy.reader.history.HistoryList.modelStateChanged(HistoryList.java:78)
+   at org.daisy.reader.model.Model.fireStateChangeEvent(Model.java:121)
+   at org.daisy.reader.model.ModelManager.load(ModelManager.java:106)
+   at org.daisy.emerson.ui.handlers.OpenPublicationHandler$1.run(OpenPublicationHandler.java:52)
+   at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+   at org.daisy.emerson.ui.handlers.OpenPublicationHandler.execute(OpenPublicationHandler.java:49)
+   at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+   at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+   at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+   at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+   at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+   at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+   at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+   at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+   at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+   at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+   at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3401)
+   at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3033)
+   at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+   at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+   at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+   at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+   at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+   at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+   at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+   at org.daisy.emerson.ui.Application.start(Application.java:49)
+   at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+   at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+   at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+   at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+   at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+   at java.lang.reflect.Method.invoke(libgcj.so.90)
+   at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+   at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+   at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+   at org.eclipse.equinox.launcher.Main.main(Main.java:1212)
+
+!ENTRY org.daisy.emerson.application 4 0 2010-05-07 23:19:29.157
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+   at org.daisy.reader.history.HistoryList.serialize(HistoryList.java:222)
+   at org.daisy.emerson.ui.ApplicationWorkbenchAdvisor.saveState(ApplicationWorkbenchAdvisor.java:48)
+   at org.eclipse.ui.internal.Workbench.saveState(Workbench.java:2413)
+   at org.eclipse.ui.internal.Workbench.recordWorkbenchState(Workbench.java:2033)
+   at org.eclipse.ui.internal.Workbench.access$11(Workbench.java:2030)
+   at org.eclipse.ui.internal.Workbench$15.run(Workbench.java:883)
+   at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+   at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:881)
+   at org.eclipse.ui.internal.Workbench.access$15(Workbench.java:838)
+   at org.eclipse.ui.internal.Workbench$23.run(Workbench.java:1082)
+   at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+   at org.eclipse.ui.internal.Workbench.close(Workbench.java:1080)
+   at org.eclipse.ui.internal.Workbench.close(Workbench.java:1052)
+   at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:719)
+   at org.eclipse.ui.internal.WorkbenchWindow.access$0(WorkbenchWindow.java:698)
+   at org.eclipse.ui.internal.WorkbenchWindow$3.run(WorkbenchWindow.java:814)
+   at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+   at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:812)
+   at org.eclipse.jface.window.Window.handleShellCloseEvent(Window.java:741)
+   at org.eclipse.jface.window.Window$3.shellClosed(Window.java:687)
+   at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:92)
+   at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+   at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1158)
+   at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1182)
+   at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1167)
+   at org.eclipse.swt.widgets.Shell.closeWidget(Shell.java:562)
+   at org.eclipse.swt.widgets.Shell.gtk_delete_event(Shell.java:1021)
+   at org.eclipse.swt.widgets.Widget.windowProc(Widget.java:1535)
+   at org.eclipse.swt.widgets.Control.windowProc(Control.java:4506)
+   at org.eclipse.swt.widgets.Display.windowProc(Display.java:4099)
+!SESSION 2010-05-07 23:19:56.031 -----------------------------------------------
+eclipse.buildId=unknown
+java.fullversion=GNU libgcj 4.3.0 20080202 (experimental) [trunk revision 132072]
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.osgi 4 0 2010-05-07 23:19:56.896
+!MESSAGE Bundle org.daisy.emerson.ui.notes not found.
