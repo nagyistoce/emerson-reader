@@ -1,0 +1,13 @@
+Emerson Release Notes
+
+== Version: 0.6.2 20090203 == 
+- Fixed epub books not being loadable when offline on Windows
+- Fixed epub load being aborted when manifest entry missing
+- Fixed epub load being aborted when essential metadata missing
+- Fixed NCX load being aborted when playOrder attribute missing
+- Fixed DAISY 3 DTB images not being shown when running Windows
+- Fixed Unicode characters not being displayed correctly when running IE/Windows
+- Add a dedicated Windows WPF (Vista) version
+
+== Version: 0.6.0 20090126 ==
+Initial binary release.

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0" progressCount="5">
+<workbenchAdvisor>
+<HistoryEntry PositionType="org.daisy.reader.model.position.SerializableSmilAudioPosition" PubId="0603171450" Author="AMERICAN COUNCIL OF THE BLIND 2007 CONFERENCE AGENDA" Title="AMERICAN COUNCIL OF THE BLIND" UserId="root" Date="1273254657987" Uri="file:/root/DEMOEMERSON/daisy/Daisy%20book/ncc.html" TypeNiceName="daisy" TypeTechName="DAISY 2.02" TypeImplementor="org.daisy.reader.model.d202.D202Model">
+<smil-audio-position smil-file="dtbx_000000001.smil" phrase-offset="0"/>
+</HistoryEntry>
+<HistoryEntry PositionType="org.daisy.reader.model.position.SerializableSmilAudioPosition" PubId="ghBOOK1211212736" Author="Chimpanzees" Title="Julie Murray" UserId="root" Date="1273254657970" Uri="file:/root/DEMOEMERSON/daisy/Chimpanzees_DAISY_3.0/Chimpanzees.opf" TypeNiceName="daisy" TypeTechName="ANSI/NISO Z39.86-2005" TypeImplementor="org.daisy.reader.model.z2005.Z2005Model">
+<smil-audio-position smil-file="Chimpanzees.smil" phrase-offset="109"/>
+</HistoryEntry>
+</workbenchAdvisor>
+<window maximized="true" x="0" y="36" width="800" height="600">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar/>
+<coolbarLayout locked="0">
+<coolItem id="org.daisy.emerson.ui.main.toolbar.file" itemType="typeToolBarContribution" x="90" y="40"/>
+<coolItem id="org.daisy.emerson.ui.main.toolbar.navigator" itemType="typeToolBarContribution" x="256" y="40"/>
+<coolItem id="org.daisy.emerson.volume.toolbars.sampleToolbar" itemType="typeToolBarContribution" x="54" y="40"/>
+</coolbarLayout>
+<page label="&lt;Unknown Label&gt; - Emerson Default Perspective" focus="true">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder expanded="2" appearance="1">
+<presentation id="org.daisy.emerson.ui.AccessiblePresentationFactory"/>
+</folder>
+</info>
+</editorArea>
+</editors>
+<views>
+<view id="org.daisy.emerson.ui.views.navigator" partName="Navigator">
+<viewState/>
+</view>
+<view id="org.eclipse.pde.runtime.LogView" partName="Error Log">
+<viewState activate="true" allSessions="true" column2="300" column3="150" column4="312" error="true" groupBy="0" info="true" limit="50" ok="true" orderType="2" orderValue="-1" show_filter_text="true" useLimit="true" warning="true"/>
+</view>
+<view id="org.daisy.emerson.ui.views.library" partName="Library">
+<viewState/>
+</view>
+<view id="org.daisy.emerson.ui.views.browser" partName="Text">
+<viewState/>
+</view>
+</views>
+<perspectives activePerspective="org.daisy.emerson.ui.perspectives.default" activePart="org.daisy.emerson.ui.views.browser">
+<perspective version="0.016" editorAreaVisible="0" editorAreaTrimState="2" fixed="0">
+<descriptor id="org.daisy.emerson.ui.perspectives.default" label="Emerson Default Perspective" class="org.daisy.emerson.ui.DefaultPerspective"/>
+<view id="org.daisy.emerson.ui.views.browser"/>
+<view id="org.daisy.emerson.ui.views.library"/>
+<view id="org.eclipse.pde.runtime.LogView"/>
+<view id="org.daisy.emerson.ui.views.navigator"/>
+<fastViewBars/>
+<viewLayoutRec id="org.daisy.emerson.ui.views.browser" closeable="false" moveable="false" standalone="true" showTitle="false"/>
+<layout>
+<mainWindow>
+<info part="org.eclipse.ui.internal.ViewStack@18f6559" folder="true">
+<folder activePageID="org.daisy.emerson.ui.views.navigator" expanded="2" appearance="2">
+<page label="Navigator" content="org.daisy.emerson.ui.views.navigator"/>
+<page label="LabelNotFound" content="org.daisy.emerson.ui.perspectives.default.leftFolder"/>
+<presentation id="org.daisy.emerson.ui.AccessiblePresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info part="stickyFolderRight" relative="org.eclipse.ui.internal.ViewStack@18f6559" relationship="2" ratioLeft="589" ratioRight="197" ratio="0.74936384" folder="true">
+<folder expanded="2" appearance="2">
+<page label="LabelNotFound" content="org.eclipse.ui.internal.introview"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" relative="org.eclipse.ui.internal.ViewStack@18f6559" relationship="2" ratioLeft="589" ratioRight="197" ratio="0.74936384"/>
+<info part="org.eclipse.ui.internal.ViewStack@caf0ed" relative="org.eclipse.ui.internal.ViewStack@18f6559" relationship="4" ratioLeft="375" ratioRight="126" ratio="0.74850297" folder="true">
+<folder activePageID="org.daisy.emerson.ui.views.library" expanded="2" appearance="2">
+<page label="Library" content="org.daisy.emerson.ui.views.library"/>
+<page label="Error Log" content="org.eclipse.pde.runtime.LogView"/>
+<page label="LabelNotFound" content="org.daisy.emerson.ui.views.notes"/>
+<page label="LabelNotFound" content="org.daisy.emerson.ui.perspectives.default.bottomFolder"/>
+<presentation id="org.daisy.emerson.ui.AccessiblePresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.internal.ViewStack@c8570c" relative="org.eclipse.ui.internal.ViewStack@18f6559" relationship="2" ratioLeft="232" ratioRight="781" ratio="0.22902271" folder="true">
+<folder activePageID="org.daisy.emerson.ui.views.browser" expanded="2" appearance="4">
+<page label="Text" content="org.daisy.emerson.ui.views.browser"/>
+<presentation id="org.daisy.emerson.ui.AccessiblePresentationFactory"/>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList/>
+</workbench>
